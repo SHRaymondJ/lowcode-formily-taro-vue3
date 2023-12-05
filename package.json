@@ -2,7 +2,9 @@
   "name": "lowcode-formily-taro-vue3",
   "version": "1.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": {
+    "cz": "czg"
+  },
   "keywords": [],
   "author": "",
   "license": "MIT",
