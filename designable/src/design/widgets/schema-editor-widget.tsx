@@ -2,7 +2,7 @@ import { defineComponent, computed } from 'vue'
 import {
   transformToSchema,
   transformToTreeNode,
-} from '@designable/formily-transformer'
+} from '@pind/designable-formily-transformer'
 import _ from 'lodash-es'
 import { MonacoInput } from '@/design/settings-form/src'
 

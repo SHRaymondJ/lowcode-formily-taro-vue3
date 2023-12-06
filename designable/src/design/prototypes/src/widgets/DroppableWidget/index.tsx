@@ -1,4 +1,4 @@
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@pind/designable-core'
 import { observer } from '@formily/reactive-vue'
 import { useTreeNode, useNodeIdProps } from '../../hooks'
 import { NodeTitleWidget } from '../NodeTitleWidget'
@@ -7,7 +7,7 @@ import './styles.less'
 import { CSSProperties } from '@vue/runtime-dom'
 import { defineComponent } from 'vue'
 import { PropType } from 'vue'
-import { isNum, isStr } from '@designable/shared'
+import { isNum, isStr } from '@pind/designable-shared'
 
 export interface IDroppableWidgetProps {
   node?: TreeNode

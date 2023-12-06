@@ -3,7 +3,7 @@ import { TextWidget, IconWidget, usePrefix, useTheme, defineComponent } from '@/
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import { ElTooltip as Tooltip } from 'element-plus'
 import { parseExpression, parse } from '@babel/parser'
-import { isNum, isStr, uid } from '@designable/shared'
+import { isNum, isStr, uid } from '@pind/designable-shared'
 import { format } from './format'
 import cls from 'classnames'
 import './styles.less'

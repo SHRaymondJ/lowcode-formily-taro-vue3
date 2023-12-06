@@ -1,4 +1,4 @@
-import { TreeNode, Engine } from '@designable/core'
+import { TreeNode, Engine } from '@pind/designable-core'
 import { InjectionKey, Ref } from 'vue'
 import {
   IDesignerLayoutContext,

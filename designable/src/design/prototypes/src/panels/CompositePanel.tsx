@@ -1,4 +1,4 @@
-import { isValid } from '@designable/shared'
+import { isValid } from '@pind/designable-shared'
 import cls from 'classnames'
 import { IconWidget, TextWidget } from '../widgets'
 import { usePrefix } from '../hooks'

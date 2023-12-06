@@ -1,7 +1,7 @@
 import { ElCard } from 'element-plus'
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 import type { VueComponent } from '@formily/vue'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from '@pind/designable-core'
 import { DnFC } from '@/design/prototypes/src'
 import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'

@@ -1,4 +1,4 @@
-import { isStr } from '@designable/shared'
+import { isStr } from '@pind/designable-shared'
 import { useAttrs, getCurrentInstance, StyleValue, CSSProperties } from 'vue'
 
 const css2obj = (css) => {

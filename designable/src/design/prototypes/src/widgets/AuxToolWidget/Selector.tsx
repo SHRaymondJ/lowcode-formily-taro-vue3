@@ -1,5 +1,5 @@
 import { computed, CSSProperties, defineComponent, onBeforeUnmount, onMounted, Ref,ref, unref  } from 'vue'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@pind/designable-core'
 import { observer } from '@formily/reactive-vue'
 import { Button } from '@tarojs/components'
 

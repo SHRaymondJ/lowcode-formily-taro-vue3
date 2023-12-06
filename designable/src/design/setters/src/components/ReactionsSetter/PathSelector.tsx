@@ -1,4 +1,4 @@
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@pind/designable-core'
 import { useSelectedNode } from '@/design/prototypes/src'
 import { ElTreeSelect as TreeSelect } from 'element-plus'
 import type { TreeComponentProps as TreeSelectProps } from 'element-plus/es/components/tree/src/tree.type'

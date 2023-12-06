@@ -1,9 +1,9 @@
 import { useDragon, usePrefix } from '../../hooks'
-import { ClosestPosition } from '@designable/core'
+import { ClosestPosition } from '@pind/designable-core'
 import { observer } from '@formily/reactive-vue'
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 import { defineComponent } from 'vue'
-import { isNum } from '@designable/shared'
+import { isNum } from '@pind/designable-shared'
 
 export const InsertionComponent = observer(
   defineComponent({

@@ -1,6 +1,6 @@
-import { Engine } from '@designable/core'
+import { Engine } from '@pind/designable-core'
 import { DesignerEngineSymbol } from '../context'
-import { isFn } from '@designable/shared'
+import { isFn } from '@pind/designable-shared'
 import { inject, onBeforeUnmount, ref, Ref } from 'vue'
 export interface IEffects {
     (engine: Engine): void

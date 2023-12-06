@@ -1,5 +1,5 @@
 import { FormGrid as FormilyGird } from '@/design/elementcomponents/src'
-import { TreeNode, createBehavior, createResource } from '@designable/core'
+import { TreeNode, createBehavior, createResource } from '@pind/designable-core'
 import {
   DnFC,
   useTreeNode,

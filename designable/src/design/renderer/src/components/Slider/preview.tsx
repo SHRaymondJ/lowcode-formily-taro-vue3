@@ -1,7 +1,7 @@
 import { ElSlider } from 'element-plus'
 import { composeExport, transformComponent } from '@/design/elementcomponents/src/__builtins__'
 import { connect, mapProps, mapReadPretty, VueComponent } from '@formily/vue'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from '@pind/designable-core'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'

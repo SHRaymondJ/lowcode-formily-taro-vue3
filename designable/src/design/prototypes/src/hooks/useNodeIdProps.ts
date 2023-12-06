@@ -1,4 +1,4 @@
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@pind/designable-core'
 import { computed } from 'vue'
 import { useDesigner } from './useDesigner'
 import { useTreeNode } from './useTreeNode'

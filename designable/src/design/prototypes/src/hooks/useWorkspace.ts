@@ -1,6 +1,6 @@
 import { useDesigner } from './useDesigner'
 import { WorkspaceSymbol, useContext } from '../context'
-import { Workspace } from '@designable/core'
+import { Workspace } from '@pind/designable-core'
 import { ref, computed, Ref } from 'vue'
 import { computed as reactiveComputed } from '../shared'
 

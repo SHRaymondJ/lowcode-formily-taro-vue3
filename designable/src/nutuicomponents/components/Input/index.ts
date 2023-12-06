@@ -1,4 +1,4 @@
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from '@pind/designable-core'
 import { merge } from '@formily/shared'
 import { Input as FormilyInput } from '@kimeng/formily-nutui-taro/src/components'
 

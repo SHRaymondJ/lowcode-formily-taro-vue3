@@ -10,11 +10,11 @@ import {
 } from '../../hooks'
 import { ResizeHandler } from './ResizeHandler'
 import { observer } from '@formily/reactive-vue'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@pind/designable-core'
 import { defineComponent } from 'vue'
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 import { CSSProperties, toRef } from '@vue/runtime-dom'
-import { isNum } from '@designable/shared'
+import { isNum } from '@pind/designable-shared'
 import { TranslateHandler } from './TranslateHandler'
 export interface ISelectionBoxProps {
   node: TreeNode

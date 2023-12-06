@@ -1,5 +1,5 @@
 import { useDesigner, usePrefix } from '../../hooks'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@pind/designable-core'
 import { defineComponent } from 'vue'
 
 export interface IResizeHandlerProps {

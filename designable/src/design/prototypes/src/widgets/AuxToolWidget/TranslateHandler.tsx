@@ -1,5 +1,5 @@
 import { useDesigner, usePrefix } from '../../hooks'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@pind/designable-core'
 import { IconWidget } from '../IconWidget'
 import cls from 'classnames'
 import { defineComponent } from 'vue'

@@ -1,6 +1,6 @@
 import { observer } from '@formily/reactive-vue'
 import { ElTabs as Tabs, ElTabPane as TabPane } from 'element-plus'
-import { TreeNode, createBehavior, createResource } from '@designable/core'
+import { TreeNode, createBehavior, createResource } from '@pind/designable-core'
 import {
   useNodeIdProps,
   useTreeNode,

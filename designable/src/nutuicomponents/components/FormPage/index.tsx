@@ -1,5 +1,5 @@
 import { computed, defineComponent, getCurrentInstance, unref } from 'vue'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from '@pind/designable-core'
 import { createForm } from '@formily/core'
 import { observer } from '@formily/reactive-vue'
 import { FormPage as FormPageRaw } from '@kimeng/formily-nutui-taro/src/components'

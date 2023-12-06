@@ -1,4 +1,4 @@
-import { transformToSchema } from '@designable/formily-transformer'
+import { transformToSchema } from '@pind/designable-formily-transformer'
 import { createForm, Form as IForm } from '@formily/core'
 import { Form, FormLayout } from '@/design/elementcomponents/src'
 import * as ElementUI from '@/design/elementcomponents/src'

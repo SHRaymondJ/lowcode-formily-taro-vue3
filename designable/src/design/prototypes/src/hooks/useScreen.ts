@@ -1,6 +1,6 @@
 import { useDesigner } from './useDesigner'
 import { computed as reactiveComputed } from '../shared'
-import { Engine } from '@designable/core'
+import { Engine } from '@pind/designable-core'
 
 export const useScreen = () => {
   const designer = useDesigner()

@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { createBehavior } from '@designable/core'
-import { isArr, isFn, isStr } from '@designable/shared'
+import { createBehavior } from '@pind/designable-core'
+import { isArr, isFn, isStr } from '@pind/designable-shared'
 import { FormPath } from '@formily/core'
 import { toJS } from '@formily/reactive'
 import { observer } from '@formily/reactive-vue'

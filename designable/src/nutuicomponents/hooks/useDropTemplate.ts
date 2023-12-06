@@ -1,4 +1,4 @@
-import { AppendNodeEvent, TreeNode } from '@designable/core'
+import { AppendNodeEvent, TreeNode } from '@pind/designable-core'
 import { useDesigner } from '@/design/prototypes/src'
 import { matchComponent, matchChildComponent } from '../shared'
 

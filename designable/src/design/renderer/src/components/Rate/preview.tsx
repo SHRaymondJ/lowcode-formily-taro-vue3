@@ -1,7 +1,7 @@
 import { ElRate } from 'element-plus'
 import { composeExport, transformComponent } from '@/design/elementcomponents/src/__builtins__'
 import { connect, mapProps, VueComponent } from '@formily/vue'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from '@pind/designable-core'
 import { DnFC } from '@/design/prototypes/src'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'

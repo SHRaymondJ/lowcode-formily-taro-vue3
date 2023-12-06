@@ -1,4 +1,4 @@
-import { Engine, GlobalRegistry } from '@designable/core';
+import { Engine, GlobalRegistry } from '@pind/designable-core';
 
 import { defineComponent, onBeforeUnmount, provide, ref, toRef, PropType, watchEffect } from 'vue';
 import { DesignerEngineSymbol } from '../context';

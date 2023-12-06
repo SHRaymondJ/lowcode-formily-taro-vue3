@@ -1,4 +1,4 @@
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@pind/designable-core'
 import { reaction } from '@formily/reactive'
 import cls from 'classnames'
 import { useDesigner, usePrefix, useViewport } from '../../hooks'

@@ -1,5 +1,5 @@
-import { Engine } from '@designable/core';
-import { transformToSchema, transformToTreeNode } from '@designable/formily-transformer';
+import { Engine } from '@pind/designable-core';
+import { transformToSchema, transformToTreeNode } from '@pind/designable-formily-transformer';
 import { ElMessage } from 'element-plus';
 
 export const saveSchema = (designer: Engine) => {

@@ -1,5 +1,5 @@
 import { Input as FormilyInput } from '@/design/elementcomponents/src'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from '@pind/designable-core'
 import { DnFC } from '@/design/prototypes/src'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'

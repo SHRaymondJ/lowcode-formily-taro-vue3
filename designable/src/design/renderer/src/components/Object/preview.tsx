@@ -1,4 +1,4 @@
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from '@pind/designable-core'
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 import { DnFC } from '@/design/prototypes/src'
 import { createFieldSchema } from '../Field'

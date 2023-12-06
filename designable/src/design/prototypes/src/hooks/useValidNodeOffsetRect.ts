@@ -1,4 +1,4 @@
-import { CursorStatus, ScreenStatus, TreeNode } from '@designable/core'
+import { CursorStatus, ScreenStatus, TreeNode } from '@pind/designable-core'
 import {
     getCurrentInstance,
     shallowRef,

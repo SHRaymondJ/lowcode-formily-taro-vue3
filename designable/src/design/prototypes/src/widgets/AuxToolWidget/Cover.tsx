@@ -6,12 +6,12 @@ import {
   usePrefix,
 } from '../../hooks'
 import { observer } from '@formily/reactive-vue'
-import { CursorStatus, ClosestPosition } from '@designable/core'
+import { CursorStatus, ClosestPosition } from '@pind/designable-core'
 import cls from 'classnames'
 import { defineComponent, toRef } from 'vue'
 import { FragmentComponent as Fragment } from '@formily/vue'
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
-import { isNum } from '@designable/shared'
+import { isNum } from '@pind/designable-shared'
 
 // interface ICoverRectProps {
 //   node: TreeNode

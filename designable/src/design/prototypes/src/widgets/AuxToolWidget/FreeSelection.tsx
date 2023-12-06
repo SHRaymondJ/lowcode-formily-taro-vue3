@@ -1,7 +1,7 @@
 import { useCursor, usePrefix, useViewport } from '../../hooks'
 import { observer } from '@formily/reactive-vue'
-import { CursorStatus, CursorType } from '@designable/core'
-import { calcRectByStartEndPoint, isNum } from '@designable/shared'
+import { CursorStatus, CursorType } from '@pind/designable-core'
+import { calcRectByStartEndPoint, isNum } from '@pind/designable-shared'
 import cls from 'classnames'
 import { defineComponent } from 'vue'
 

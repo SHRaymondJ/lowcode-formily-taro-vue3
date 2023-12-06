@@ -1,5 +1,5 @@
 import { useCursor, usePrefix, useDesigner } from '../../hooks'
-import { CursorStatus } from '@designable/core'
+import { CursorStatus } from '@pind/designable-core'
 import { autorun, observe } from '@formily/reactive'
 import { observer } from '@formily/reactive-vue'
 import { NodeTitleWidget } from '../NodeTitleWidget'

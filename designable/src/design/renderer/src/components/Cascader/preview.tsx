@@ -1,6 +1,6 @@
 import { Cascader as FormilyCascader } from '@/design/elementcomponents/src'
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from '@pind/designable-core'
 import { DnFC } from '@/design/prototypes/src'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'

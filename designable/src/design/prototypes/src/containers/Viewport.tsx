@@ -1,7 +1,7 @@
 import { usePrefix, useViewport } from '../hooks'
 import { AuxToolWidget, EmptyWidget } from '../widgets'
-import { Viewport as ViewportType } from '@designable/core'
-import { requestIdle } from '@designable/shared'
+import { Viewport as ViewportType } from '@pind/designable-core'
+import { requestIdle } from '@pind/designable-shared'
 import cls from 'classnames'
 import {
   defineComponent,

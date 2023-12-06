@@ -1,6 +1,6 @@
 export * from './reactive'
 export * from './useEffect'
-import { isStr } from '@designable/shared'
+import { isStr } from '@pind/designable-shared'
 import { cloneVNode, CSSProperties } from '@vue/runtime-dom'
 import { useAttrs } from 'vue'
 

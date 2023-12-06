@@ -5,7 +5,7 @@ import {
   IDesignerLayoutContext,
   useContext,
 } from '../context'
-import { each } from '@designable/shared'
+import { each } from '@pind/designable-shared'
 
 export const Layout = defineComponent({
   name: 'Layout',
