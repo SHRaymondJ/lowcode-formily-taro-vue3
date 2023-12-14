@@ -1,25 +1,27 @@
-import { useDesigner } from './useDesigner'
-import { WorkspaceSymbol, useContext } from '../context'
+import { computed, ComputedRef, Ref, ref } from 'vue'
 import { Workspace } from '@pind/designable-core'
-import { ref, computed, Ref } from 'vue'
+
+import { useContext, WorkspaceSymbol } from '../context'
 import { computed as reactiveComputed } from '../shared'
 
-export const useWorkspace = (id?: string): Ref<Workspace> => {
-    const designer = useDesigner()
-    const workspaceRef = ref()
+import { useDesigner } from './useDesigner'
 
-    const WorkspaceSymbolRef = useContext(WorkspaceSymbol)
+export const useWorkspace = (id?: string): Ref<Workspace> | ComputedRef<Workspace> => {
+  const designer = useDesigner()
+  const workspaceRef = ref()
 
-    if (window['__DESIGNABLE_WORKSPACE__']) {
-        workspaceRef.value = window['__DESIGNABLE_WORKSPACE__']
-        return workspaceRef
+  const WorkspaceSymbolRef = useContext(WorkspaceSymbol)
+
+  if (window['__DESIGNABLE_WORKSPACE__']) {
+    workspaceRef.value = window['__DESIGNABLE_WORKSPACE__']
+    return workspaceRef
+  }
+
+  return reactiveComputed(() => {
+    const workspaceId = id || WorkspaceSymbolRef?.value?.id
+    if (workspaceId) {
+      return designer.value.workbench.findWorkspaceById(workspaceId)
     }
-
-    return reactiveComputed(() => {
-        const workspaceId = id || WorkspaceSymbolRef?.value.id
-        if (workspaceId) {
-            return designer.value.workbench.findWorkspaceById(workspaceId)
-        }
-        return designer.value.workbench.currentWorkspace
-    })
+    return designer.value.workbench.currentWorkspace
+  }) as ComputedRef<Workspace>
 }

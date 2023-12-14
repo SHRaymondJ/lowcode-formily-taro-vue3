@@ -9,10 +9,14 @@ export const useNodeIdProps = (node?: TreeNode) => {
   const designerRef = useDesigner()
   
   return reactiveComputed(() => {
-    return {
+    const nodeIdProps = {
       [designerRef.value.props.nodeIdAttrName]: node
         ? node.id
-        : targetRef.value.id,
+        : targetRef.value?.id,
     }
+    if (!targetRef.value) {
+      alert('useNodeIdProps test')
+    }
+    return nodeIdProps
   })
 }

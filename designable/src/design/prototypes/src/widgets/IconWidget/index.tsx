@@ -37,7 +37,7 @@ export interface IShadowSVGProps {
 }
 export interface IIconWidgetProps extends HTMLElement {
   tooltip?: ElTooltipProps
-  infer: VNode | { shadow: string }
+  infer: VNode | { shadow: string } | string
   size?: number | string
 }
 // IIconWidgetProps
@@ -52,7 +52,7 @@ const __IconWidgetInner = defineComponent({
   emits: ['click'],
   setup(props, { attrs, emit }) {
     const themeRef = useTheme()
-    const IconContextRef: Ref<IconProviderProps> = useContext(IconSymbol)
+    const IconContextRef: Ref<IconProviderProps | undefined> = useContext(IconSymbol)
     const registry = useRegistry()
     const prefixRef = usePrefix('icon')
 
@@ -81,6 +81,7 @@ const __IconWidgetInner = defineComponent({
           )
         } else if (isVNode(infer)) {
           if (infer.type === 'svg') {
+            // @ts-ignore
             const Component = cloneElement(infer, {
               height,
               width,
@@ -107,7 +108,7 @@ const __IconWidgetInner = defineComponent({
           return infer
         } else if (isPlainObj(infer)) {
           const theme = unref(themeRef)
-          if (infer[theme]) {
+          if (theme && infer[theme]) {
             return takeIcon(infer[theme])
           } else if (infer['shadow']) {
             return <IconWidget.ShadowSVG width={width} height={height} content={infer['shadow']} />

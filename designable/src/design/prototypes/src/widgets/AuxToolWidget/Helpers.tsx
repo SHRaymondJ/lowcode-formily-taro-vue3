@@ -1,15 +1,18 @@
-import { TreeNode } from '@pind/designable-core'
+import { computed, defineComponent, nextTick, ref, unref } from 'vue'
 import { reaction } from '@formily/reactive'
+import { TreeNode } from '@pind/designable-core'
 import cls from 'classnames'
-import { useDesigner, usePrefix, useViewport } from '../../hooks'
-import { Selector } from './Selector'
+import { ElButtonGroup as ButtonGroup } from 'element-plus'
+
+import { composeExport } from '@/design/elementcomponents/src/__builtins__'
+
+import { usePrefix, useViewport } from '../../hooks'
+import { useEffect } from '../../shared/useEffect'
+
 import { Copy } from './Copy'
 import { Delete } from './Delete'
-import { composeExport } from '@/design/elementcomponents/src/__builtins__'
-import { computed, defineComponent, nextTick, ref, unref } from 'vue'
-import { ElButtonGroup as ButtonGroup } from 'element-plus'
-import { useEffect } from '../../shared/useEffect'
 import { DragHandler } from './DragHandler'
+import { Selector } from './Selector'
 
 const HELPER_DEBOUNCE_TIMEOUT = 100
 
@@ -30,9 +33,8 @@ const HelpersComponent = defineComponent({
   name: 'Helpers',
   props: ['node', 'nodeRect'],
   emits: ['click'],
-  setup(props, { }) {
+  setup(props, {}) {
     const prefixRef = usePrefix('aux-helpers')
-    const designerRef = useDesigner()
     const viewportRef = useViewport()
     const unmountRef = ref(false)
     const refContainer = ref<HTMLDivElement>()
@@ -51,7 +53,8 @@ const HelpersComponent = defineComponent({
           ) {
             return 'inner-top'
           } else if (
-            viewportRef.value.isScrollBottom &&
+            nodeRect.bottom >=
+              viewportRef.value.scrollY + viewportRef.value.height &&
             nodeRect.height + helpersRect.height > viewportRef.value.height
           ) {
             return 'inner-bottom'
@@ -111,7 +114,6 @@ const HelpersComponent = defineComponent({
     return () => {
       const node = props.node
       const nodeRect = props.nodeRect
-      const designer = designerRef.value
       if (!nodeRect || !node) return null
 
       return (
@@ -120,7 +122,7 @@ const HelpersComponent = defineComponent({
             [unref(position)]: true,
           })}
           ref={refContainer}
-          onClick={e => e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()}
         >
           <div class={cls(prefixRef.value + '-content')}>
             <Selector node={node} />

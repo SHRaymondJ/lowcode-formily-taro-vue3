@@ -1,4 +1,5 @@
 import { defineComponent } from 'vue'
+import { TreeNode } from '@pind/designable-core'
 import { Button } from '@tarojs/components'
 
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
@@ -16,7 +17,6 @@ const CopyComponent = defineComponent({
   name: 'CopyComponent',
   props: ['node'],
   setup(props) {
-    const operationRef = useOperation()
     const prefixRef = usePrefix('aux-copy')
     const style = useStyle()
     return () => {
@@ -26,7 +26,7 @@ const CopyComponent = defineComponent({
           class={prefixRef.value}
           style={style}
           onClick={() => {
-            operationRef.value.cloneNodes([props.node])
+            TreeNode.clone([props.node])
           }}
         >
           <IconWidget infer="Clone" />

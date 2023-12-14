@@ -1,17 +1,13 @@
-import {
-  useViewport,
-  useDragon,
-  useCursor,
-  useValidNodeOffsetRect,
-  usePrefix,
-} from '../../hooks'
-import { observer } from '@formily/reactive-vue'
-import { CursorStatus, ClosestPosition } from '@pind/designable-core'
-import cls from 'classnames'
 import { defineComponent, toRef } from 'vue'
+import { observer } from '@formily/reactive-vue'
 import { FragmentComponent as Fragment } from '@formily/vue'
-import { composeExport } from '@/design/elementcomponents/src/__builtins__'
+import { ClosestPosition, CursorStatus, TreeNode } from '@pind/designable-core'
 import { isNum } from '@pind/designable-shared'
+import cls from 'classnames'
+
+import { composeExport } from '@/design/elementcomponents/src/__builtins__'
+
+import { useCursor, useMoveHelper, usePrefix, useValidNodeOffsetRect, useViewport } from '../../hooks'
 
 // interface ICoverRectProps {
 //   node: TreeNode
@@ -33,13 +29,11 @@ const CoverRect = defineComponent({
           position: 'absolute',
           top: 0,
           left: 0,
-          pointerEvents: 'none',
+          pointerEvents: 'none'
         }
         if (rect) {
           baseStyle.transform = `perspective(1px) translate3d(${rect.x}px,${rect.y}px,0)`
-          baseStyle.height = isNum(rect.height)
-            ? rect.height + 'px'
-            : rect.height
+          baseStyle.height = isNum(rect.height) ? rect.height + 'px' : rect.height
           baseStyle.width = isNum(rect.width) ? rect.width + 'px' : rect.width
         }
         return baseStyle
@@ -48,20 +42,20 @@ const CoverRect = defineComponent({
         <div
           class={cls(prefixRef.value, {
             dragging: props.dragging,
-            dropping: props.dropping,
+            dropping: props.dropping
           })}
           style={createCoverStyle()}
         ></div>
       )
     }
-  },
+  }
 })
 
 const CoverComponent = observer(
   defineComponent({
     name: 'CoverComponent',
     setup() {
-      const viewportDragonRef = useDragon()
+      const viewportMoveHelper = useMoveHelper()
       const viewportRef = useViewport()
       const cursorRef = useCursor()
 
@@ -70,18 +64,16 @@ const CoverComponent = observer(
 
         const renderDropCover = () => {
           if (
-            !viewportDragonRef.value.closestNode ||
-            !viewportDragonRef.value.closestNode?.allowAppend(
-              viewportDragonRef.value.dragNodes
-            ) ||
-            viewportDragonRef.value.closestDirection !== ClosestPosition.Inner
+            !viewportMoveHelper.value.closestNode ||
+            !viewportMoveHelper.value.closestNode?.allowAppend(viewportMoveHelper.value.dragNodes) ||
+            viewportMoveHelper.value.viewportClosestDirection !== ClosestPosition.Inner
           )
             return null
           return (
             <CoverRect
               {...{
                 dropping: true,
-                node: viewportDragonRef.value.closestNode,
+                node: viewportMoveHelper.value.closestNode
               }}
             />
           )
@@ -89,21 +81,16 @@ const CoverComponent = observer(
 
         return (
           <>
-            {viewportDragonRef.value.dragNodes.map((node) => {
+            {viewportMoveHelper.value.dragNodes.map((node) => {
               if (!node) return
               if (!viewportRef.value.findElementById(node.id)) return
-              return (
-                <CoverRect
-                  key={node.id}
-                  {...{ dragging: true, node: node }}
-                />
-              )
+              return <CoverRect key={node.id} {...{ dragging: true, node: node }} />
             })}
             {renderDropCover()}
           </>
         )
       }
-    },
+    }
   })
 )
 

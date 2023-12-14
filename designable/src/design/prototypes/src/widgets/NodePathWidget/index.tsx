@@ -1,10 +1,15 @@
-import { ElBreadcrumb as Breadcrumb, ElBreadcrumbItem as BreadcrumbItem } from 'element-plus'
+import { defineComponent } from 'vue'
 import { FragmentComponent as Fragment } from '@formily/vue'
-import { useCurrentNode, useSelection, usePrefix, useHover } from '../../hooks'
+import {
+  ElBreadcrumb as Breadcrumb,
+  ElBreadcrumbItem as BreadcrumbItem,
+} from 'element-plus'
+
+import { useHover, usePrefix, useSelectedNode, useSelection } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
+
 import './styles.less'
-import { defineComponent } from 'vue'
 
 export interface INodePathWidgetProps {
   workspaceId?: string
@@ -14,7 +19,7 @@ export interface INodePathWidgetProps {
 export const NodePathWidget = defineComponent({
   props: ['workspaceId', 'maxItems'],
   setup(props) {
-    const selectedRef = useCurrentNode(props.workspaceId)
+    const selectedRef = useSelectedNode(props.workspaceId)
     const selectionRef = useSelection(props.workspaceId)
     const hoverRef = useHover(props.workspaceId)
     const prefixRef = usePrefix('node-path')

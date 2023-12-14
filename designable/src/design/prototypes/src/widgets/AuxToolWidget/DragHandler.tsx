@@ -1,6 +1,6 @@
-import { CSSProperties, defineComponent , PropType } from 'vue'
-import { TreeNode } from '@pind/designable-core'
+import { CSSProperties, defineComponent, PropType } from 'vue'
 import { observer } from '@formily/reactive-vue'
+import { TreeNode } from '@pind/designable-core'
 import { Button } from '@tarojs/components'
 import { ElButton } from 'element-plus'
 

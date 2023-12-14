@@ -1,9 +1,10 @@
-import { useCursor, usePrefix, useViewport } from '../../hooks'
+import { defineComponent } from 'vue'
 import { observer } from '@formily/reactive-vue'
-import { CursorStatus, CursorType } from '@pind/designable-core'
+import { CursorDragType, CursorStatus } from '@pind/designable-core'
 import { calcRectByStartEndPoint, isNum } from '@pind/designable-shared'
 import cls from 'classnames'
-import { defineComponent } from 'vue'
+
+import { useCursor, useOperation, usePrefix, useViewport } from '../../hooks'
 
 export const FreeSelection = observer(
   defineComponent({
@@ -13,26 +14,28 @@ export const FreeSelection = observer(
       const cursorRef = useCursor()
       const viewportRef = useViewport()
       const prefixRef = usePrefix('aux-free-selection')
+      const operationRef = useOperation()
 
       return () => {
         const cursor = cursorRef.value
         const viewport = viewportRef.value
+        const operation = operationRef.value
         const createSelectionStyle = () => {
+          const { dragStartPosition, position } = cursor
+          if (!dragStartPosition) return {}
           const startDragPoint = viewport.getOffsetPoint({
-            x: cursor.dragStartPosition.topClientX,
-            y: cursor.dragStartPosition.topClientY,
+            x: dragStartPosition.topClientX || 0,
+            y: dragStartPosition.topClientY || 0,
           })
           const currentPoint = viewport.getOffsetPoint({
-            x: cursor.position.topClientX,
-            y: cursor.position.topClientY,
+            x: position.topClientX || 0,
+            y: position.topClientY || 0,
           })
           const rect = calcRectByStartEndPoint(
             startDragPoint,
             currentPoint,
-            viewport.scrollX -
-            cursor.dragStartScrollOffset.scrollX,
-            viewport.scrollY -
-            cursor.dragStartScrollOffset.scrollY
+            viewport.dragScrollXDelta,
+            viewport.dragScrollYDelta
           )
 
           const baseStyle: any = {
@@ -51,10 +54,11 @@ export const FreeSelection = observer(
           }
           return baseStyle
         }
-
+        console.log('FreeSelection -> ', )
         if (
+          operation.moveHelper.hasDragNodes ||
           cursorRef.value.status !== CursorStatus.Dragging ||
-          cursorRef.value.type !== CursorType.Selection
+          cursor.dragType !== CursorDragType.Move
         )
           return null
         return (

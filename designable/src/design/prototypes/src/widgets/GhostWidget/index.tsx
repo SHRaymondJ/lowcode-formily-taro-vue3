@@ -1,12 +1,15 @@
-import { useCursor, usePrefix, useDesigner } from '../../hooks'
-import { CursorStatus } from '@pind/designable-core'
+import { defineComponent, onBeforeUnmount, ref, unref } from 'vue'
 import { autorun, observe } from '@formily/reactive'
 import { observer } from '@formily/reactive-vue'
-import { NodeTitleWidget } from '../NodeTitleWidget'
-import './styles.less'
+import { CursorStatus } from '@pind/designable-core'
+
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
-import { defineComponent, ref, unref, onBeforeUnmount } from 'vue'
+
+import { useCursor, useDesigner, usePrefix } from '../../hooks'
 import { useEffect } from '../../shared/useEffect'
+import { NodeTitleWidget } from '../NodeTitleWidget'
+
+import './styles.less'
 
 const GhostWidgetComponent = defineComponent({
   setup() {
@@ -19,9 +22,12 @@ const GhostWidgetComponent = defineComponent({
       () =>
         autorun(() => {
           const cursor = unref(cursorRef)
+          if (!cursor.position) return
+          const { topClientX = 0, topClientY = 0 } = cursor.position
           const ref = refInstance.value
-          const transform = `perspective(1px) translate3d(${cursor.position!.topClientX! - 18
-            }px,${cursor.position!.topClientY! - 12}px,0) scale(0.8)`
+          const transform = `perspective(1px) translate3d(${
+            topClientX - 18
+          }px,${topClientY - 12}px,0) scale(0.8)`
           if (!ref) return
           ref.style.transform = transform
         }),
@@ -32,8 +38,8 @@ const GhostWidgetComponent = defineComponent({
       const designer = unref(designerRef)
       const cursor = unref(cursorRef)
 
-      const draggingNodes = designer.findDraggingNodes()
-      const firstNode = draggingNodes[0]
+      const movingNodes = designer.findMovingNodes()
+      const firstNode = movingNodes[0]
 
       const renderNodes = () => {
         return (
@@ -43,7 +49,7 @@ const GhostWidgetComponent = defineComponent({
             }}
           >
             <NodeTitleWidget node={firstNode} />
-            {draggingNodes.length > 1 ? '...' : ''}
+            {movingNodes.length > 1 ? '...' : ''}
           </span>
         )
       }

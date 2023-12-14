@@ -1,13 +1,25 @@
-import cls from 'classnames'
-import { useTree, usePrefix, useOutline, useWorkbench } from '../../hooks'
+import {
+  CSSProperties,
+  defineComponent,
+  onBeforeUnmount,
+  onMounted,
+  provide,
+  ref,
+  unref,
+  VNode,
+} from 'vue'
 import { observer } from '@formily/reactive-vue'
-import { OutlineTreeNode } from './OutlineNode'
-import { Insertion } from './Insertion'
 import { TreeNode, Viewport } from '@pind/designable-core'
-import { NodeSymbol } from './context'
-import { CSSProperties, defineComponent, onMounted, provide, ref, unref, VNode, onBeforeUnmount } from 'vue'
+import cls from 'classnames'
+
 import { useStyle } from '@/design/prototypes/src'
+
+import { useOutline, usePrefix, useTree, useWorkbench } from '../../hooks'
 import { useEffect } from '../../shared'
+
+import { NodeSymbol } from './context'
+import { Insertion } from './Insertion'
+import { OutlineTreeNode } from './OutlineNode'
 
 export interface IOutlineTreeWidgetProps {
   className?: string
@@ -26,7 +38,9 @@ export const OutlineTreeWidget = observer(
       const refInstance = ref<HTMLDivElement>()
       const prefixRef = usePrefix('outline-tree')
       const workbenchRef = useWorkbench()
-      const current = workbenchRef.value?.activeWorkspace || workbenchRef.value?.currentWorkspace
+      const current =
+        workbenchRef.value?.activeWorkspace ||
+        workbenchRef.value?.currentWorkspace
       const workspaceId = current?.id
       const treeRef = useTree(workspaceId)
       const outline = useOutline(workspaceId)
@@ -51,10 +65,20 @@ export const OutlineTreeWidget = observer(
           _outline.onMount(refInstance.value, window)
         }
         outlineRef.value = _outline
+        if (!outlineRef.value) {
+          return
+        }
         return () => {
           outlineRef.value?.onUnmount()
         }
-      }, [refInstance, outlineRef, outline, () => workbenchRef.value?.activeWorkspace || workbenchRef.value?.currentWorkspace])
+      }, [
+        refInstance,
+        outlineRef,
+        outline,
+        () =>
+          workbenchRef.value?.activeWorkspace ||
+          workbenchRef.value?.currentWorkspace,
+      ])
       // outlineRef
 
       return () => {

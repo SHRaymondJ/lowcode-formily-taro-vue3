@@ -1,20 +1,21 @@
-import './styles.less'
+import { defineComponent, isVNode, ref, unref , VNode } from 'vue'
+import { observer } from '@formily/reactive-vue'
+import { VueComponent } from '@formily/vue'
 import {
+  IResource,
+  IResourceLike,
   isResourceHost,
   isResourceList,
-  IResourceLike,
-  IResource,
 } from '@pind/designable-core'
 import { isFn } from '@pind/designable-shared'
-import { observer } from '@formily/reactive-vue'
+import cls from 'classnames'
+
 import { usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
-import { TextWidget } from '../TextWidget'
-import cls from 'classnames'
-import { defineComponent, isVNode, ref, unref } from 'vue'
-import { VNode } from 'vue/types/umd'
-import { VueComponent } from '@formily/vue'
 import { NodeTitleWidget } from '../NodeTitleWidget'
+import { TextWidget } from '../TextWidget'
+
+import './styles.less'
 
 export interface IResourceWidgetProps {
   title: VNode
@@ -46,15 +47,15 @@ export const ResourceWidget = observer(
             {...{ key: node?.id, 'data-designer-source-id': node?.id }}
           >
             {thumb && <img class={prefix + '-item-thumb'} src={thumb} />}
-            {icon && isVNode(icon) ?
+            {icon && isVNode(icon) ? (
               <>{icon}</>
-              : (
-                <IconWidget
-                  class={prefix + '-item-icon'}
-                  infer={icon}
-                  style={{ width: '150px', height: '40px' }}
-                />
-              )}
+            ) : (
+              <IconWidget
+                class={prefix + '-item-icon'}
+                infer={icon}
+                style={{ width: '150px', height: '40px' }}
+              />
+            )}
             <span class={prefix + '-item-text'}>
               {title || <NodeTitleWidget node={node}></NodeTitleWidget>}
             </span>

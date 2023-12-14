@@ -1,9 +1,8 @@
-import { usePosition, usePrefix } from '../hooks'
-import { Layout } from '../containers'
+import { defineComponent, StyleValue, unref, VNode } from 'vue'
 import cls from 'classnames'
-import { StyleValue } from '@vue/runtime-dom'
-import { defineComponent, unref } from 'vue'
-import { VNode } from 'vue'
+
+import { Layout } from '../containers'
+import { usePosition, usePrefix } from '../hooks'
 import { IDesignerLayoutProps } from '../types'
 
 export interface IStudioPanelProps {
@@ -29,12 +28,8 @@ const StudioPanelInternal = defineComponent({
         return (
           <div {...attrs} class={cls(prefix + '-container', 'root', position)}>
             <div class={prefix + '-header'}>
-              <div class={prefix + '-header-logo'}>
-                {slots.logo?.()}
-              </div>
-              <div class={prefix + '-header-actions'}>
-                {slots.actions?.()}
-              </div>
+              <div class={prefix + '-header-logo'}>{slots.logo?.()}</div>
+              <div class={prefix + '-header-actions'}>{slots.actions?.()}</div>
             </div>
             <div class={prefix}>{slots.default?.()}</div>
           </div>
@@ -46,7 +41,7 @@ const StudioPanelInternal = defineComponent({
         </div>
       )
     }
-  },
+  }
 })
 
 export const StudioPanel = defineComponent({
@@ -62,11 +57,9 @@ export const StudioPanel = defineComponent({
     //   actions: slots.actions,
     // }
     return () => (
-      <Layout
-        {...{ theme: props.theme, prefixCls: props.prefixCls, position: props.position }}
-      >
+      <Layout {...{ theme: props.theme, prefixCls: props.prefixCls, position: props.position }}>
         <StudioPanelInternal {...props} v-slots={slots} />
       </Layout>
     )
-  },
+  }
 })

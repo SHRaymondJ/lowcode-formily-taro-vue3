@@ -1,21 +1,24 @@
-import { Helpers } from './Helpers'
-import {
-  useSelection,
-  useValidNodeOffsetRect,
-  useTree,
-  useCursor,
-  useDragon,
-  usePrefix,
-  useDesigner
-} from '../../hooks'
-import { ResizeHandler } from './ResizeHandler'
+import { CSSProperties, defineComponent, toRef } from 'vue'
 import { observer } from '@formily/reactive-vue'
 import { TreeNode } from '@pind/designable-core'
-import { defineComponent } from 'vue'
-import { composeExport } from '@/design/elementcomponents/src/__builtins__'
-import { CSSProperties, toRef } from '@vue/runtime-dom'
 import { isNum } from '@pind/designable-shared'
+
+import { composeExport } from '@/design/elementcomponents/src/__builtins__'
+
+import {
+  useCursor,
+  useDesigner,
+  useMoveHelper,
+  usePrefix,
+  useSelection,
+  useTree,
+  useValidNodeOffsetRect,
+} from '../../hooks'
+
+import { Helpers } from './Helpers'
+import { ResizeHandler } from './ResizeHandler'
 import { TranslateHandler } from './TranslateHandler'
+
 export interface ISelectionBoxProps {
   node: TreeNode
   showHelpers: boolean
@@ -60,15 +63,20 @@ export const SelectionBox = defineComponent({
       const selectionId = {
         [designer.props?.nodeSelectionIdAttrName!]: props.node.id,
       }
+      console.log('Selection -> ', nodeRect)
       return (
-        <div {...selectionId} class={prefixRef.value} style={createSelectionStyle()}>
+        <div
+          {...selectionId}
+          class={prefixRef.value}
+          style={createSelectionStyle()}
+        >
           <div class={innerPrefix}></div>
           <ResizeHandler node={props.node} />
           <TranslateHandler node={props.node} />
           {props.showHelpers && (
             <Helpers
               {...attrs}
-              key={JSON.stringify(nodeRect.toJSON())}
+              key={JSON.stringify(nodeRect.toJSON?.() || nodeRect)}
               node={props.node}
               nodeRect={nodeRect}
             />
@@ -86,11 +94,11 @@ const SelectionComponent = observer(
       const selectionRef = useSelection()
       const treeRef = useTree()
       const cursorRef = useCursor()
-      const viewportDragonRef = useDragon()
+      const viewportMoveHelper = useMoveHelper()
       return () => {
         if (
           cursorRef.value.status !== 'NORMAL' &&
-          viewportDragonRef.value.touchNode
+          viewportMoveHelper.value.touchNode
         )
           return null
         return (

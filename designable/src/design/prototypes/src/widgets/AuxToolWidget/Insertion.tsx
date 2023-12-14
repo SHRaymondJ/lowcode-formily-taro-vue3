@@ -1,24 +1,26 @@
-import { useDragon, usePrefix } from '../../hooks'
-import { ClosestPosition } from '@pind/designable-core'
-import { observer } from '@formily/reactive-vue'
-import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 import { defineComponent } from 'vue'
+import { observer } from '@formily/reactive-vue'
+import { ClosestPosition } from '@pind/designable-core'
 import { isNum } from '@pind/designable-shared'
+
+import { composeExport } from '@/design/elementcomponents/src/__builtins__'
+
+import { useMoveHelper, usePrefix } from '../../hooks'
 
 export const InsertionComponent = observer(
   defineComponent({
     name: 'Insertion',
     props: [],
     setup() {
-      const viewportDragon = useDragon()
+      const moveHelper = useMoveHelper()
       const prefix = usePrefix('aux-insertion')
 
       return () => {
         const createInsertionStyle = (): any => {
-          const closestDirection = viewportDragon.value.closestDirection
-          const closestRect = viewportDragon.value.closestOffsetRect
+          const closestDirection = moveHelper.value.closestDirection
+          const closestRect = moveHelper.value.viewportClosestOffsetRect
           const isInlineLayout =
-            viewportDragon.value.getClosestLayout() === 'horizontal'
+            moveHelper.value.closestNode?.moveLayout === 'horizontal'
           const baseStyle: any = {
             position: 'absolute',
             transform: 'perspective(1px) translate3d(0,0,0)',
@@ -39,8 +41,9 @@ export const InsertionComponent = observer(
           ) {
             baseStyle.width = 2
             baseStyle.height = closestRect.height
-            baseStyle.transform = `perspective(1px) translate3d(${closestRect.x + closestRect.width - 2
-              }px,${closestRect.y}px,0)`
+            baseStyle.transform = `perspective(1px) translate3d(${
+              closestRect.x + closestRect.width - 2
+            }px,${closestRect.y}px,0)`
           } else if (
             closestDirection === ClosestPosition.InnerAfter ||
             closestDirection === ClosestPosition.Under ||
@@ -50,13 +53,15 @@ export const InsertionComponent = observer(
             if (isInlineLayout) {
               baseStyle.width = 2
               baseStyle.height = closestRect.height
-              baseStyle.transform = `perspective(1px) translate3d(${closestRect.x + closestRect.width - 2
-                }px,${closestRect.y}px,0)`
+              baseStyle.transform = `perspective(1px) translate3d(${
+                closestRect.x + closestRect.width - 2
+              }px,${closestRect.y}px,0)`
             } else {
               baseStyle.width = closestRect.width
               baseStyle.height = 2
-              baseStyle.transform = `perspective(1px) translate3d(${closestRect.x
-                }px,${closestRect.y + closestRect.height - 2}px,0)`
+              baseStyle.transform = `perspective(1px) translate3d(${
+                closestRect.x
+              }px,${closestRect.y + closestRect.height - 2}px,0)`
             }
           } else if (
             closestDirection === ClosestPosition.InnerBefore ||
@@ -74,7 +79,7 @@ export const InsertionComponent = observer(
               baseStyle.transform = `perspective(1px) translate3d(${closestRect.x}px,${closestRect.y}px,0)`
             }
           }
-          if (closestDirection.includes('FORBID')) {
+          if (closestDirection?.includes('FORBID')) {
             baseStyle.backgroundColor = 'red'
           }
           Object.keys(baseStyle).forEach((key) => {

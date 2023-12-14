@@ -102,6 +102,7 @@ const SelectorComponent = observer(
                     onClick={() => {
                       selectionRef.value.select(parent.id)
                     }}
+                    // todo check
                     onMouseenter={() => {
                       hoverRef.value.setHover(parent)
                     }}
@@ -121,6 +122,7 @@ const SelectorComponent = observer(
           <div ref={refInstance} class={prefixRef.value}>
             <Button
               class={prefixRef.value + '-title'}
+              // todo check
               onMouseenter={() => {
                 hoverRef.value.setHover(node)
               }}
