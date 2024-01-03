@@ -1,9 +1,10 @@
-import { observer } from '@formily/reactive-vue'
-import { useTree, useWorkbench } from '../hooks'
-import { Viewport } from '../containers'
 import { defineComponent, markRaw, toRaw } from 'vue'
-import { ITreeNode } from '@pind/designable-core'
 import { toJS } from '@formily/reactive'
+import { observer } from '@formily/reactive-vue'
+import { ITreeNode } from '@pind/designable-core'
+
+import { Viewport } from '../containers'
+import { useTree, useWorkbench } from '../hooks'
 
 // export interface IViewPanelProps {
 //   type: WorkbenchTypes

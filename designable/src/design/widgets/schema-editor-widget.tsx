@@ -1,10 +1,9 @@
-import { defineComponent, computed } from 'vue'
-import {
-  transformToSchema,
-  transformToTreeNode,
-} from '@pind/designable-formily-transformer'
+import { computed, defineComponent } from 'vue'
 import _ from 'lodash-es'
+
 import { MonacoInput } from '@/design/settings-form/src'
+
+import { myTransformToSchema, myTransformToTreeNode } from '../common'
 
 export default defineComponent({
   name: 'SchemaEditorWidget',
@@ -12,7 +11,8 @@ export default defineComponent({
   emits: ['change'],
   setup(props, { attrs, emit }) {
     const code = computed(() => {
-      return JSON.stringify(transformToSchema(props.tree), null, 2)
+      console.log('props.tree => ', props.tree)
+      return JSON.stringify(myTransformToSchema(props.tree), null, 2)
     })
 
     return () => {
@@ -20,7 +20,11 @@ export default defineComponent({
         <MonacoInput
           {...attrs}
           value={code.value}
-          onChange={(value) => emit('change', transformToTreeNode(JSON.parse(value)))}
+          onChange={(value) => {
+            const result = myTransformToTreeNode(JSON.parse(value))
+            console.log('result => ', result)
+            return emit('change', result)
+          }}
           language="json"
           height="100%"
           width="100%"

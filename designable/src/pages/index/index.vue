@@ -33,7 +33,7 @@
               :style="{
                 height: '1000px',
                 width: '750px',
-                overflow: 'auto'
+                overflow: 'auto',
               }"
             >
               <ViewPanel type="DESIGNABLE">
@@ -41,7 +41,10 @@
               </ViewPanel>
               <ViewPanel type="JSONTREE" :scrollable="false">
                 <template #default="tree, onChange">
-                  <SchemaEditorWidget :tree="tree" @change="onChange"></SchemaEditorWidget>
+                  <SchemaEditorWidget
+                    :tree="tree"
+                    @change="onChange"
+                  ></SchemaEditorWidget>
                 </template>
               </ViewPanel>
               <ViewPanel type="PREVIEW" :scrollable="false">
@@ -60,7 +63,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { createDesigner, GlobalRegistry } from '@pind/designable-core'
+import { createDesigner, GlobalRegistry } from "@pind/designable-core";
 
 import {
   ComponentTreeWidget,
@@ -77,47 +80,47 @@ import {
   ViewportPanel,
   ViewToolsWidget,
   Workbench,
-  WorkspacePanel
-} from '@/design/prototypes/src'
-import { SettingsForm } from '@/design/settings-form/src'
-import { Field, FormPage, Input } from '@/nutuicomponents'
+  WorkspacePanel,
+} from "@/design/prototypes/src";
+import { SettingsForm } from "@/design/settings-form/src";
+import { Field, FormPage, Input } from "@/nutuicomponents";
 
 GlobalRegistry.registerDesignerLocales({
-  'zh-CN': {
+  "zh-CN": {
     sources: {
-      Inputs: '输入控件',
-      Layouts: '布局组件',
-      Arrays: '自增组件',
-      Displays: '展示组件'
-    }
+      Inputs: "输入控件",
+      Layouts: "布局组件",
+      Arrays: "自增组件",
+      Displays: "展示组件",
+    },
   },
-  'en-US': {
+  "en-US": {
     sources: {
-      Inputs: 'Inputs',
-      Layouts: 'Layouts',
-      Arrays: 'Arrays',
-      Displays: 'Displays'
-    }
-  }
-})
+      Inputs: "Inputs",
+      Layouts: "Layouts",
+      Arrays: "Arrays",
+      Displays: "Displays",
+    },
+  },
+});
 
-const CompositePanelItem = CompositePanel.Item
+const CompositePanelItem = CompositePanel.Item;
 
 const engine = createDesigner({
   shortcuts: [],
-  rootComponentName: 'FormPage'
-})
+  rootComponentName: "FormPage",
+});
 
 const components = {
   Field,
   FormPage,
-  Input
-}
+  Input,
+};
 
 const sources = {
   Inputs: [Input],
   Arrays: [],
   Displays: [],
-  Layouts: []
-}
+  Layouts: [],
+};
 </script>
