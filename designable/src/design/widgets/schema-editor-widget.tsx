@@ -11,7 +11,6 @@ export default defineComponent({
   emits: ['change'],
   setup(props, { attrs, emit }) {
     const code = computed(() => {
-      console.log('props.tree => ', props.tree)
       return JSON.stringify(myTransformToSchema(props.tree), null, 2)
     })
 
@@ -22,7 +21,6 @@ export default defineComponent({
           value={code.value}
           onChange={(value) => {
             const result = myTransformToTreeNode(JSON.parse(value))
-            console.log('result => ', result)
             return emit('change', result)
           }}
           language="json"
