@@ -3,13 +3,12 @@ import { createForm, Form as IForm } from '@formily/core'
 import { connect, createSchemaField, mapProps } from '@formily/vue'
 
 import { Form, FormLayout } from '@/design/elementcomponents/src'
-import * as ElementUI from '@/design/elementcomponents/src'
-import { Card, Rate, Slider, Text, TreeSelect } from '@/design/renderer/src'
+import { Field, FormPage, Input } from '@/nutuicomponents'
 
 import { myTransformToSchema } from '../common'
 
 const { SchemaField } = createSchemaField({
-  components: {},
+  components: { Field, FormPage, Input },
 })
 
 export default defineComponent({
