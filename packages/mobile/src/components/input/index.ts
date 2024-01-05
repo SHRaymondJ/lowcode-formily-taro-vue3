@@ -13,6 +13,7 @@ const TransformNutInput = transformComponent<InputProps>(_NutInput, {
 const InnerInput = connect(
   TransformNutInput,
   mapProps({
+    // [field prop name] : [NutUI prop name]
     value: 'modelValue',
     readOnly: 'readonly'
   }),
@@ -21,7 +22,7 @@ const InnerInput = connect(
 
 const TextArea = connect(
   InnerInput,
-  mapProps((props) => {
+  mapProps(props => {
     return {
       ...props,
       type: 'textarea'

@@ -1,4 +1,5 @@
 export * from './form-page'
 export * from './input'
+export * from './FormItem'
 export * from './SchemaField'
 export * from './utils'

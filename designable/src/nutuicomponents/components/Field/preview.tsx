@@ -1,15 +1,28 @@
 import { defineComponent } from 'vue'
-import { createBehavior } from '@pind/designable-core'
-import { isArr, isFn, isStr } from '@pind/designable-shared'
 import { FormPath } from '@formily/core'
 import { toJS } from '@formily/reactive'
 import { observer } from '@formily/reactive-vue'
 import { each, reduce } from '@formily/shared'
-import { ArrayField, Field as InternalField, ISchema, ObjectField, Schema, VoidField } from '@formily/vue'
+import {
+  ArrayField,
+  Field as InternalField,
+  ISchema,
+  ObjectField,
+  Schema,
+  VoidField,
+} from '@formily/vue'
+import { createBehavior } from '@pind/designable-core'
+import { isArr, isFn, isStr } from '@pind/designable-shared'
+import { FormItem } from '@raymond/formily-nutui-taro/src/components'
 import { View } from '@tarojs/components'
 
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
-import { DnFC, useComponents, useDesigner, useTreeNode } from '@/design/prototypes/src'
+import {
+  DnFC,
+  useComponents,
+  useDesigner,
+  useTreeNode,
+} from '@/design/prototypes/src'
 
 import { Container } from '../../common/Container'
 import { AllLocales } from '../../locales'
@@ -17,13 +30,13 @@ import { AllLocales } from '../../locales'
 Schema.silent(true)
 
 const SchemaStateMap = {
-  'title': 'title',
-  'description': 'description',
-  'default': 'value',
-  'enum': 'dataSource',
-  'readOnly': 'readOnly',
-  'writeOnly': 'editable',
-  'required': 'required',
+  title: 'title',
+  description: 'description',
+  default: 'value',
+  enum: 'dataSource',
+  readOnly: 'readOnly',
+  writeOnly: 'editable',
+  required: 'required',
   'x-content': 'content',
   'x-value': 'value',
   'x-editable': 'editable',
@@ -33,15 +46,15 @@ const SchemaStateMap = {
   'x-visible': 'visible',
   'x-hidden': 'hidden',
   'x-display': 'display',
-  'x-pattern': 'pattern'
+  'x-pattern': 'pattern',
 }
 
 const NeedShownExpression = {
-  'title': true,
-  'description': true,
-  'default': true,
+  title: true,
+  description: true,
+  default: true,
   'x-content': true,
-  'x-value': true
+  'x-value': true,
 }
 
 const isExpression = (val: any) => isStr(val) && /^\{\{.*\}\}$/.test(val)
@@ -74,7 +87,12 @@ const filterExpression = (val: any) => {
   return val
 }
 
-const toDesignableFieldProps = (schema: ISchema, components: any, nodeIdAttrName: string, id: string) => {
+const toDesignableFieldProps = (
+  schema: ISchema,
+  components: any,
+  nodeIdAttrName: string,
+  id: string
+) => {
   const results: any = {}
   each(SchemaStateMap, (fieldKey, schemaKey) => {
     const value = schema[schemaKey]
@@ -89,11 +107,12 @@ const toDesignableFieldProps = (schema: ISchema, components: any, nodeIdAttrName
     }
   })
   if (!components['FormItem']) {
-    // TODO: FormItem
-    components['FormItem'] = View
+    components['FormItem'] = FormItem
   }
-  const decorator = schema['x-decorator'] && FormPath.getIn(components, schema['x-decorator'])
-  const component = schema['x-component'] && FormPath.getIn(components, schema['x-component'])
+  const decorator =
+    schema['x-decorator'] && FormPath.getIn(components, schema['x-decorator'])
+  const component =
+    schema['x-component'] && FormPath.getIn(components, schema['x-component'])
   const decoratorProps = schema['x-decorator-props'] || {}
   const componentProps = schema['x-component-props'] || {}
 
@@ -103,8 +122,10 @@ const toDesignableFieldProps = (schema: ISchema, components: any, nodeIdAttrName
   if (component) {
     // 有的是functional 有的是 正常的 vueComponent
     results.component = [
-      isFn(component) ? component : Object.assign({}, component, { Behavior: null, Resource: null }),
-      toJS(componentProps)
+      isFn(component)
+        ? component
+        : Object.assign({}, component, { Behavior: null, Resource: null }),
+      toJS(componentProps),
     ]
   }
   if (decorator) {
@@ -115,8 +136,11 @@ const toDesignableFieldProps = (schema: ISchema, components: any, nodeIdAttrName
   // vue为异步渲染需要进行缓存 不然就变成了函数
   const title = results.title
   const description = results.description
-  results.title = title && (() => <span data-content-editable="title">{title}</span>)
-  results.description = description && <span data-content-editable="description">{results.description}</span>
+  results.title =
+    title && (() => <span data-content-editable="title">{title}</span>)
+  results.description = description && (
+    <span data-content-editable="description">{results.description}</span>
+  )
   return results
 }
 //
@@ -129,6 +153,7 @@ const FieldComponent = observer(
       const componentsRef = useComponents()
       const nodeRef = useTreeNode()
       props = attrs as ISchema
+
       return () => {
         if (!nodeRef.value) return null
         const fieldProps = toDesignableFieldProps(
@@ -137,27 +162,47 @@ const FieldComponent = observer(
           designerRef.value.props.nodeIdAttrName!,
           nodeRef.value.id
         )
+        console.log('fieldProps => ', props, fieldProps)
         if (props.type === 'object') {
           return (
             <Container>
-              <ObjectField name={nodeRef.value.id} {...fieldProps} v-slots={slots} />
+              <ObjectField
+                name={nodeRef.value.id}
+                {...fieldProps}
+                v-slots={slots}
+              />
             </Container>
           )
         } else if (props.type === 'array') {
-          return <ArrayField {...fieldProps} v-slots={slots} name={nodeRef.value.id} />
+          return (
+            <ArrayField
+              {...fieldProps}
+              v-slots={slots}
+              name={nodeRef.value.id}
+            />
+          )
         } else if (nodeRef.value.props?.type === 'void') {
-          return <VoidField {...fieldProps} v-slots={slots} name={nodeRef.value.id} />
+          return (
+            <VoidField
+              {...fieldProps}
+              v-slots={slots}
+              name={nodeRef.value.id}
+            />
+          )
         }
         return <InternalField {...fieldProps} name={nodeRef.value.id} />
       }
-    }
+    },
   })
 )
 
-export const Field: DnFC<Vue.Component<any, any, any, any>> = composeExport(FieldComponent, {
-  Behavior: createBehavior({
-    name: 'Field',
-    selector: 'Field',
-    designerLocales: AllLocales.Field
-  })
-})
+export const Field: DnFC<Vue.Component<any, any, any, any>> = composeExport(
+  FieldComponent,
+  {
+    Behavior: createBehavior({
+      name: 'Field',
+      selector: 'Field',
+      designerLocales: AllLocales.Field,
+    }),
+  }
+)

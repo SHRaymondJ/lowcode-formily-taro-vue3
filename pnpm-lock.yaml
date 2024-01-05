@@ -53,7 +53,7 @@ importers:
       '@guolao/vue-monaco-editor':
         specifier: ^0.0.5
         version: 0.0.5(monaco-editor@0.33.0)(vue@3.3.9)
-      '@kimeng/formily-nutui-taro':
+      '@raymond/formily-nutui-taro':
         specifier: workspace:*
         version: link:packages/mobile
       '@kimeng/vm':

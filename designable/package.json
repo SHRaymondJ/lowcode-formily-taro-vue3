@@ -32,7 +32,7 @@
     "@formily/validator": "^2.2.1",
     "@formily/vue": "^2.2.1",
     "@guolao/vue-monaco-editor": "^0.0.5",
-    "@kimeng/formily-nutui-taro": "workspace:1.0.0",
+    "@raymond/formily-nutui-taro": "workspace:1.0.0",
     "@kimeng/vm": "^0.4.0",
     "@monaco-editor/loader": "^1.4.0",
     "@nutui/icons-vue-taro": "^0.0.9",
