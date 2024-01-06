@@ -38,6 +38,10 @@ const FormItem = defineComponent({
     gridSpan: {},
     bordered: { default: true },
     inset: { default: false },
+    decorator: {},
+    decoratorProps: {},
+    componentProps: {},
+    component: {},
   },
   setup(props, { slots }) {
     const prefixCls = `${stylePrefix}-form-item`
@@ -60,10 +64,15 @@ const FormItem = defineComponent({
         feedbackStatus,
         feedbackIcon,
         asterisk,
+        decorator,
+        decoratorProps,
+        componentProps,
+        component,
       } = props as any
 
+      console.log('props => ', props)
       return (
-        <Cell class="card" style={wrapperStyle}>
+        <Cell class="card" style={componentProps.decoratorProps?.style || {}}>
           <span>{resolveComponent(label)}</span>
           {slots.default?.()}
         </Cell>

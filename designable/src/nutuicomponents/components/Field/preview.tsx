@@ -114,20 +114,26 @@ const toDesignableFieldProps = (
   const component =
     schema['x-component'] && FormPath.getIn(components, schema['x-component'])
   const decoratorProps = schema['x-decorator-props'] || {}
-  const componentProps = schema['x-component-props'] || {}
+  const componentProps = toJS(schema['x-component-props']) || {}
 
-  if (decorator) {
-    results.decorator = [decorator, toJS(decoratorProps)]
+  if (component && decorator) {
+    componentProps.decoratorProps = toJS(decoratorProps)
   }
+
   if (component) {
     // 有的是functional 有的是 正常的 vueComponent
     results.component = [
       isFn(component)
         ? component
         : Object.assign({}, component, { Behavior: null, Resource: null }),
-      toJS(componentProps),
+      componentProps,
     ]
   }
+
+  if (decorator) {
+    results.decorator = [decorator, toJS(decoratorProps)]
+  }
+
   if (decorator) {
     FormPath.setIn(results['decorator'][1], nodeIdAttrName, id)
   } else if (component) {
@@ -162,7 +168,6 @@ const FieldComponent = observer(
           designerRef.value.props.nodeIdAttrName!,
           nodeRef.value.id
         )
-        console.log('fieldProps => ', props, fieldProps)
         if (props.type === 'object') {
           return (
             <Container>
