@@ -83,7 +83,7 @@ import {
   WorkspacePanel,
 } from "@/design/prototypes/src";
 import { SettingsForm } from "@/design/settings-form/src";
-import { Field, FormPage, Input } from "@/nutuicomponents";
+import { Field, FormPage, Input, FormLayout } from "@/nutuicomponents";
 
 GlobalRegistry.registerDesignerLocales({
   "zh-CN": {
@@ -115,12 +115,13 @@ const components = {
   Field,
   FormPage,
   Input,
+  FormLayout,
 };
 
 const sources = {
   Inputs: [Input],
   Arrays: [],
   Displays: [],
-  Layouts: [],
+  Layouts: [FormLayout],
 };
 </script>

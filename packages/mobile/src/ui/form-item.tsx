@@ -1,8 +1,9 @@
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { Cell, CellGroup, FormItem as __NutFormItem } from '@nutui/nutui-taro'
 import { View as _View } from '@tarojs/components'
 import * as _ from 'lodash-es'
 
+import { useFormDeepContext } from '../components'
 import { resolveComponent, stylePrefix } from '../components/__builtins__'
 
 const FormItem = defineComponent({
@@ -70,11 +71,25 @@ const FormItem = defineComponent({
         component,
       } = props as any
 
+      const formDeepContext = useFormDeepContext()
+
       console.log('props => ', props)
+
       return (
-        <Cell class="card" style={componentProps.decoratorProps?.style || {}}>
-          <span>{resolveComponent(label)}</span>
+        <Cell
+          class={`card ${prefixCls}`}
+          style={componentProps.decoratorProps?.style || {}}
+        >
+          <span>
+            {asterisk && (
+              <span style={{ color: '#fa2c19', marginRight: '4px' }}>*</span>
+            )}
+            {resolveComponent(label)}
+            {colon ? ':' : ''}
+          </span>
+          {addonBefore && <span>{addonBefore}</span>}
           {slots.default?.()}
+          {addonBefore && <span>{addonAfter}</span>}
         </Cell>
       )
     }

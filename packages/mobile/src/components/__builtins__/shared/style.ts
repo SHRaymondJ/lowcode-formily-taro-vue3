@@ -6,3 +6,7 @@ export function getStyleNumber (value: string | number) {
     return `${value}px`
   }
 }
+
+export function pascalCaseToKebabCase (str) {
+  return str.replace(/([A-Z])/g, match => '-' + match.toLowerCase())
+}
