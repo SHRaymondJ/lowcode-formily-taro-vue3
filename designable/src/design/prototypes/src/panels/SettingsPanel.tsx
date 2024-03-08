@@ -1,9 +1,11 @@
-import { requestIdle } from '@/design/shared/src'
-import { observer } from '@formily/reactive-vue'
-import { TextWidget, IconWidget } from '../widgets'
-import { usePrefix, useWorkbench } from '../hooks'
-import cls from 'classnames'
 import { defineComponent, ref, watchEffect } from 'vue'
+import { observer } from '@formily/reactive-vue'
+import cls from 'classnames'
+
+import { requestIdle } from '@/design/shared/src'
+
+import { usePrefix, useWorkbench } from '../hooks'
+import { IconWidget, TextWidget } from '../widgets'
 
 export interface ISettingPanelProps {
   title?: any
@@ -13,7 +15,7 @@ export interface ISettingPanelProps {
 export const SettingsPanel = observer(
   defineComponent({
     props: ['title', 'extra'],
-    setup(props, { slots }) {
+    setup (props, { slots }) {
       const prefixRef = usePrefix('settings-panel')
       const workbenchRef = useWorkbench()
       const innerVisible = ref(true)
@@ -38,7 +40,7 @@ export const SettingsPanel = observer(
           return null
         }
         if (!visible.value) {
-          if (innerVisible) innerVisible.value = false
+          if (innerVisible.value) innerVisible.value = false
           return (
             <div
               class={prefixRef.value + '-opener'}
@@ -46,7 +48,7 @@ export const SettingsPanel = observer(
                 visible.value = true
               }}
             >
-              <IconWidget infer="Setting" size={'20px'} />
+              <IconWidget infer='Setting' size={'20px'} />
             </div>
           )
         }
@@ -63,7 +65,7 @@ export const SettingsPanel = observer(
                 </div>
                 {!pinning.value && (
                   <IconWidget
-                    infer="PushPinOutlined"
+                    infer='PushPinOutlined'
                     key={prefixRef.value + '-header-pin'}
                     class={prefixRef.value + '-header-pin'}
                     onClick={() => {
@@ -73,7 +75,7 @@ export const SettingsPanel = observer(
                 )}
                 {pinning.value && (
                   <IconWidget
-                    infer="PushPinFilled"
+                    infer='PushPinFilled'
                     key={prefixRef.value + '-pin-filled'}
                     class={prefixRef.value + '-pin-filled'}
                     onClick={() => {
@@ -82,7 +84,7 @@ export const SettingsPanel = observer(
                   />
                 )}
                 <IconWidget
-                  infer="Close"
+                  infer='Close'
                   class={prefixRef.value + '-header-close'}
                   onClick={() => {
                     visible.value = false
@@ -96,6 +98,6 @@ export const SettingsPanel = observer(
           </div>
         )
       }
-    },
+    }
   })
 )
