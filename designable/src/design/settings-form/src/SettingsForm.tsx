@@ -28,7 +28,7 @@ import {
   shallowRef,
   watch,
 } from 'vue'
-import { cancelIdle, requestIdle } from '@pind/designable-shared'
+import { cancelIdle, requestIdle } from '@/design/shared/src'
 // eslint-disable-next-line
 const GlobalState = {
   idleRequest: null,

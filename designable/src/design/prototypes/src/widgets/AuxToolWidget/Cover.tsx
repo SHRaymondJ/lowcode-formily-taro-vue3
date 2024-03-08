@@ -1,8 +1,8 @@
 import { defineComponent, toRef } from 'vue'
 import { observer } from '@formily/reactive-vue'
 import { FragmentComponent as Fragment } from '@formily/vue'
-import { ClosestPosition, CursorStatus, TreeNode } from '@pind/designable-core'
-import { isNum } from '@pind/designable-shared'
+import { ClosestPosition, CursorStatus, TreeNode } from '@/design/core/src'
+import { isNum } from '@/design/shared/src'
 import cls from 'classnames'
 
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'

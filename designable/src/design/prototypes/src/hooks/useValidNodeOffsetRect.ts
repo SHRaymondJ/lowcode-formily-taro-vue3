@@ -1,6 +1,6 @@
 import { getCurrentInstance, Ref, shallowRef } from 'vue'
-import { CursorDragType, CursorStatus, TreeNode } from '@pind/designable-core'
-import { LayoutObserver, Rect } from '@pind/designable-shared'
+import { CursorDragType, CursorStatus, TreeNode } from '@/design/core/src'
+import { LayoutObserver, Rect } from '@/design/shared/src'
 
 import { useEffect } from '../shared/useEffect'
 

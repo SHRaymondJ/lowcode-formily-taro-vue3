@@ -1,5 +1,5 @@
 import { ElCard as Card, ElRow as Row, ElCol as Col } from 'element-plus'
-import { TreeNode, createResource } from '@pind/designable-core'
+import { TreeNode, createResource } from '@/design/core/src'
 import { useTreeNode, TreeNodeWidget, DroppableWidget, useNodeIdProps, DnFC } from '@/design/prototypes/src'
 import { ArrayBaseMixins, Space } from '@/design/elementcomponents/src'
 import { observer } from '@formily/reactive-vue'
@@ -14,7 +14,7 @@ import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 import type { VueComponent } from '@formily/vue'
 import { defineComponent } from 'vue'
 import { FragmentComponent as Fragment } from '@formily/vue'
-import { uid } from '@pind/designable-shared'
+import { uid } from '@/design/shared/src'
 import { VNode } from 'vue'
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode('object')

@@ -6,8 +6,8 @@ import {
   IResourceLike,
   isResourceHost,
   isResourceList,
-} from '@pind/designable-core'
-import { isFn } from '@pind/designable-shared'
+} from '@/design/core/src'
+import { isFn } from '@/design/shared/src'
 import cls from 'classnames'
 
 import { usePrefix } from '../../hooks'

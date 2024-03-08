@@ -1,4 +1,4 @@
-import { requestIdle } from '@pind/designable-shared'
+import { requestIdle } from '@/design/shared/src'
 import { observer } from '@formily/reactive-vue'
 import { TextWidget, IconWidget } from '../widgets'
 import { usePrefix, useWorkbench } from '../hooks'

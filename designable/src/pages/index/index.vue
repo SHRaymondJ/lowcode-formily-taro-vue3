@@ -63,7 +63,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { createDesigner, GlobalRegistry } from "@pind/designable-core";
+import { createDesigner, GlobalRegistry } from "@/design/core/src";
 
 import {
   ComponentTreeWidget,

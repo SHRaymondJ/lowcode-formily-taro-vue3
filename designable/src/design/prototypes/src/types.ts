@@ -1,4 +1,4 @@
-import { Engine, IResource, IBehavior } from '@pind/designable-core'
+import { Engine, IResource, IBehavior } from '@/design/core/src'
 import Vue, { VNode } from 'vue'
 
 export interface IDesignerLayoutProps {

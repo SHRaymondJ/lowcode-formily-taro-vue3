@@ -1,6 +1,6 @@
 import { computed, defineComponent } from 'vue'
 import { observer } from '@formily/reactive-vue'
-import { CursorStatus } from '@pind/designable-core'
+import { CursorStatus } from '@/design/core/src'
 
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 

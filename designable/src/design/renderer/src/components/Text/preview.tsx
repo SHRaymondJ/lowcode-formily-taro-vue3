@@ -1,4 +1,4 @@
-import { createBehavior, createResource } from '@pind/designable-core'
+import { createBehavior, createResource } from '@/design/core/src'
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 import type { VueComponent } from '@formily/vue'
 import type { CSSProperties } from '@vue/runtime-dom'

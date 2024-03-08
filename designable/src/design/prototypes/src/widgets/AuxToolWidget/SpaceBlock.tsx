@@ -1,10 +1,10 @@
 import { computed, defineComponent } from 'vue'
 import { observer } from '@formily/reactive-vue'
-import { CursorStatus } from '@pind/designable-core'
+import { CursorStatus } from '@/design/core/src'
 import {
   calcRectOfAxisLineSegment,
   ILineSegment,
-} from '@pind/designable-shared'
+} from '@/design/shared/src'
 
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 

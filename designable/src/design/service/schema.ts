@@ -1,4 +1,4 @@
-import { Engine } from '@pind/designable-core'
+import { Engine } from '@/design/core/src'
 import { ElMessage } from 'element-plus'
 import { myTransformToSchema, myTransformToTreeNode } from '../common'
 

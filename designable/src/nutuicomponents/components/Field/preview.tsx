@@ -11,8 +11,8 @@ import {
   Schema,
   VoidField,
 } from '@formily/vue'
-import { createBehavior } from '@pind/designable-core'
-import { isArr, isFn, isStr } from '@pind/designable-shared'
+import { createBehavior } from '@/design/core/src'
+import { isArr, isFn, isStr } from '@/design/shared/src'
 import { FormItem } from '@raymond/formily-nutui-taro/src/components'
 import { View } from '@tarojs/components'
 
@@ -26,6 +26,7 @@ import {
 
 import { Container } from '../../common/Container'
 import { AllLocales } from '../../locales'
+import { behaviorOfResizeAndtranslate } from '@/nutuicomponents/shared'
 
 Schema.silent(true)
 
@@ -208,6 +209,9 @@ export const Field: DnFC<Vue.Component<any, any, any, any>> = composeExport(
       name: 'Field',
       selector: 'Field',
       designerLocales: AllLocales.Field,
+      designerProps: {
+        ...behaviorOfResizeAndtranslate,
+      },
     }),
   }
 )

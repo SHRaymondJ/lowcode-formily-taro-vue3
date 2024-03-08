@@ -14,15 +14,6 @@ importers:
       '@babel/runtime':
         specifier: ^7.7.7
         version: 7.23.5
-      '@designable/core':
-        specifier: 1.0.0-beta.45
-        version: 1.0.0-beta.45(@formily/json-schema@2.3.0)(@formily/path@2.3.0)(@formily/reactive@2.3.0)
-      '@designable/formily-transformer':
-        specifier: 1.0.0-beta.45
-        version: 1.0.0-beta.45(@formily/core@2.3.0)(@formily/json-schema@2.3.0)(@formily/path@2.3.0)(@formily/reactive@2.3.0)
-      '@designable/shared':
-        specifier: 1.0.0-beta.45
-        version: 1.0.0-beta.45
       '@element-plus/icons-vue':
         specifier: ^2.0.4
         version: 2.3.1(vue@3.3.9)
@@ -35,6 +26,9 @@ importers:
       '@formily/json-schema':
         specifier: ^2.2.1
         version: 2.3.0(typescript@4.9.5)
+      '@formily/path':
+        specifier: ^2.3.1
+        version: 2.3.1
       '@formily/reactive':
         specifier: ^2.2.1
         version: 2.3.0
@@ -53,9 +47,9 @@ importers:
       '@guolao/vue-monaco-editor':
         specifier: ^0.0.5
         version: 0.0.5(monaco-editor@0.33.0)(vue@3.3.9)
-      '@raymond/formily-nutui-taro':
-        specifier: workspace:*
-        version: link:packages/mobile
+      '@juggle/resize-observer':
+        specifier: ^3.4.0
+        version: 3.4.0
       '@kimeng/vm':
         specifier: ^0.4.0
         version: 0.4.0
@@ -68,15 +62,12 @@ importers:
       '@nutui/nutui-taro':
         specifier: ^4.0.4
         version: 4.2.3(unplugin-vue-components@0.23.0)
-      '@pind/designable-core':
-        specifier: 2.0.0-beta.6
-        version: 2.0.0-beta.6(@formily/json-schema@2.3.0)(@formily/path@2.3.0)
       '@pind/designable-formily-transformer':
         specifier: 2.0.0-beta.6
-        version: 2.0.0-beta.6(@formily/core@2.3.0)(@formily/json-schema@2.3.0)(@formily/path@2.3.0)
-      '@pind/designable-shared':
-        specifier: 2.0.0-beta.6
-        version: 2.0.0-beta.6
+        version: 2.0.0-beta.6(@formily/core@2.3.0)(@formily/json-schema@2.3.0)(@formily/path@2.3.1)
+      '@raymond/formily-nutui-taro':
+        specifier: workspace:*
+        version: link:packages/mobile
       '@tarojs/components':
         specifier: 3.6.20
         version: 3.6.20(postcss@8.4.31)(vue@3.3.9)
@@ -140,6 +131,9 @@ importers:
       qrcode:
         specifier: ^1.5.3
         version: 1.5.3
+      requestidlecallback:
+        specifier: ^0.3.0
+        version: 0.3.0
       resize-observer-polyfill:
         specifier: ^1.5.1
         version: 1.5.1
@@ -1822,44 +1816,6 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /@designable/core@1.0.0-beta.45(@formily/json-schema@2.3.0)(@formily/path@2.3.0)(@formily/reactive@2.3.0):
-    resolution: {integrity: sha512-zCN2O9HlVaqcd90KCl1OtsWTBMX4+xcWfew9sqxQfOE9GWc2VENw2IpbHcIsGaEDhklmZZ83vnDrivjwhZMMsw==}
-    engines: {npm: '>=3.0.0'}
-    peerDependencies:
-      '@formily/json-schema': ^2.0.2
-      '@formily/path': ^2.0.2
-      '@formily/reactive': ^2.0.2
-    dependencies:
-      '@designable/shared': 1.0.0-beta.45
-      '@formily/json-schema': 2.3.0(typescript@4.9.5)
-      '@formily/path': 2.3.0
-      '@formily/reactive': 2.3.0
-      '@juggle/resize-observer': 3.4.0
-    dev: false
-
-  /@designable/formily-transformer@1.0.0-beta.45(@formily/core@2.3.0)(@formily/json-schema@2.3.0)(@formily/path@2.3.0)(@formily/reactive@2.3.0):
-    resolution: {integrity: sha512-8qr21jzv0wLmXRGBkuANzgXGwLgZZVMeBqyfcEIBWS+XCnsFL3Jte5ggh6icAzv7BWWYkuzXcXVFRrRw6nCX8g==}
-    engines: {npm: '>=3.0.0'}
-    peerDependencies:
-      '@formily/core': ^2.0.2
-      '@formily/json-schema': ^2.0.2
-    dependencies:
-      '@designable/core': 1.0.0-beta.45(@formily/json-schema@2.3.0)(@formily/path@2.3.0)(@formily/reactive@2.3.0)
-      '@designable/shared': 1.0.0-beta.45
-      '@formily/core': 2.3.0
-      '@formily/json-schema': 2.3.0(typescript@4.9.5)
-    transitivePeerDependencies:
-      - '@formily/path'
-      - '@formily/reactive'
-    dev: false
-
-  /@designable/shared@1.0.0-beta.45:
-    resolution: {integrity: sha512-gHbTp+LlpIOvKg2QX6iq8BotNn98Dnf2/xc2fXJfWz97YlbSDEqYaPiCAQYHGoucAjj1BWYZQFdNar1FdOfR9g==}
-    engines: {npm: '>=3.0.0'}
-    dependencies:
-      requestidlecallback: 0.3.0
-    dev: false
-
   /@devexpress/error-stack-parser@2.0.6:
     resolution: {integrity: sha512-fneVypElGUH6Be39mlRZeAu00pccTlf4oVuzf9xPJD1cdEqI8NyAiQua/EW7lZdrbMUbgyXcJmfKPefhYius3A==}
     dependencies:
@@ -2162,6 +2118,11 @@ packages:
 
   /@formily/path@2.3.0:
     resolution: {integrity: sha512-LbSW50ytAH9wPlZc2VkjRjMukoYWiDAII7HfGkSnkCDQYduhWzvbqpkKOd/W8l5VFrLrl2/7yWkfp5cChv0wjA==}
+    engines: {npm: '>=3.0.0'}
+    dev: false
+
+  /@formily/path@2.3.1:
+    resolution: {integrity: sha512-BVo89K5nAFntx02+EV696If1b1bVIm5I1tRPtVyCVIjBIfAgga5hK4k80GZ01Dlk3tpReHpiIbZVg2DNVfw7jA==}
     engines: {npm: '>=3.0.0'}
     dev: false
 
@@ -2475,7 +2436,7 @@ packages:
       lightningcss: 1.22.1
     dev: true
 
-  /@pind/designable-core@2.0.0-beta.6(@formily/json-schema@2.3.0)(@formily/path@2.3.0):
+  /@pind/designable-core@2.0.0-beta.6(@formily/json-schema@2.3.0)(@formily/path@2.3.1):
     resolution: {integrity: sha512-WUdGrIaQV5UBIkuTXcLpFSFzILS3V2XIMpeaOZrh4SyZ2/AuhCJq+xZsEuUNj320RsJE/C1lE9sdGzxo0cbcug==}
     engines: {npm: '>=3.0.0'}
     peerDependencies:
@@ -2483,13 +2444,13 @@ packages:
       '@formily/path': ^2.2.14
     dependencies:
       '@formily/json-schema': 2.3.0(typescript@4.9.5)
-      '@formily/path': 2.3.0
+      '@formily/path': 2.3.1
       '@formily/reactive': 2.3.0
       '@juggle/resize-observer': 3.4.0
       '@pind/designable-shared': 2.0.0-beta.6
     dev: false
 
-  /@pind/designable-formily-transformer@2.0.0-beta.6(@formily/core@2.3.0)(@formily/json-schema@2.3.0)(@formily/path@2.3.0):
+  /@pind/designable-formily-transformer@2.0.0-beta.6(@formily/core@2.3.0)(@formily/json-schema@2.3.0)(@formily/path@2.3.1):
     resolution: {integrity: sha512-/ZF3Tb7g3aWTnZhtqXaKxEDOE2JMBaR4sxRQGKokq0QuqFD1sVo2OVD+EzOVMzaiyyVM28ns2ZlYR1fozdECaQ==}
     engines: {npm: '>=3.0.0'}
     peerDependencies:
@@ -2498,7 +2459,7 @@ packages:
     dependencies:
       '@formily/core': 2.3.0
       '@formily/json-schema': 2.3.0(typescript@4.9.5)
-      '@pind/designable-core': 2.0.0-beta.6(@formily/json-schema@2.3.0)(@formily/path@2.3.0)
+      '@pind/designable-core': 2.0.0-beta.6(@formily/json-schema@2.3.0)(@formily/path@2.3.1)
       '@pind/designable-shared': 2.0.0-beta.6
     transitivePeerDependencies:
       - '@formily/path'

@@ -2,7 +2,7 @@
 import { FragmentComponent as Fragment } from '@formily/vue'
 import { observer } from '@formily/reactive-vue'
 import { ElButton as Button, ElInput as Input, ElInputNumber as InputNumber, ElButtonGroup as ButtonGroup } from 'element-plus'
-import { CursorType, ScreenType } from '@pind/designable-core'
+import { CursorType, ScreenType } from '@/design/core/src'
 import {
   useCursor,
   useHistory,

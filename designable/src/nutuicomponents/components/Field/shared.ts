@@ -1,4 +1,5 @@
 import { ISchema } from '@formily/json-schema'
+import * as lodash from 'lodash-es'
 
 import { DataSourceSetter, ReactionsSetter, ValidatorSetter } from '@/design/setters/src'
 
@@ -47,7 +48,7 @@ export const createComponentSchema = (component: ISchema, decorator: ISchema) =>
         }
       },
       'properties': {
-        'x-component-props.style': AllSchemas.CSSStyle
+        'x-component-props.style': lodash.cloneDeep(AllSchemas.CSSStyle)
       }
     },
     'decorator-style-group': {
@@ -62,7 +63,7 @@ export const createComponentSchema = (component: ISchema, decorator: ISchema) =>
         }
       },
       'properties': {
-        'x-decorator-props.style': AllSchemas.CSSStyle
+        'x-decorator-props.style': lodash.cloneDeep(AllSchemas.CSSStyle)
       }
     }
   }

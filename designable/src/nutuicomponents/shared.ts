@@ -1,4 +1,4 @@
-import { TreeNode, Engine } from '@pind/designable-core'
+import { TreeNode, Engine } from '@/design/core/src'
 
 export type ComponentNameMatcher =
   | string
@@ -110,4 +110,119 @@ export const createEnsureTypeItemsNode = (type: string) => (node: TreeNode) => {
     node.prepend(newObjectNode)
     return newObjectNode
   }
+}
+
+export const behaviorOfResizeAndtranslate = {
+  resizable: {
+    width(node, element) {
+      const width = Number(
+        node.props?.style?.width ?? element.getBoundingClientRect().width
+      )
+      return {
+        // plus: () => {
+        //   node.props = node.props || {}
+        //   node.props.style = node.props.style || {}
+        //   node.props.style.width = width + 10
+        // },
+        // minus: () => {
+        //   node.props = node.props || {}
+        //   node.props.style = node.props.style || {}
+        //   node.props.style.width = width - 10
+        // },
+        resize() {
+          node.props = node.props || {}
+          const styleKey = node.props['x-decorator']
+            ? 'x-decorator-props'
+            : 'x-component-props'
+          node.props[styleKey] = node.props[styleKey] || {}
+          node.props[styleKey].style = node.props[styleKey].style || {}
+          node.props[styleKey].style.width = width + 'px'
+        },
+      }
+    },
+    height(node, element) {
+      const height = Number(
+        node.props?.style?.height ?? element.getBoundingClientRect().height
+      )
+      return {
+        // plus: () => {
+        //   node.props = node.props || {}
+        //   node.props.style = node.props.style || {}
+        //   node.props.style.height = height + 10
+        // },
+        // minus: () => {
+        //   node.props = node.props || {}
+        //   node.props.style = node.props.style || {}
+        //   node.props.style.height = height - 10
+        // },
+        resize() {
+          node.props = node.props || {}
+          const styleKey = node.props['x-decorator']
+            ? 'x-decorator-props'
+            : 'x-component-props'
+          node.props[styleKey] = node.props[styleKey] || {}
+          node.props[styleKey].style = node.props[styleKey].style || {}
+          node.props[styleKey].style.height = height + 'px'
+        },
+      }
+    },
+  },
+  translatable: {
+    reset(node) {
+      node.props = node.props || {}
+      const styleKey = node.props['x-decorator']
+        ? 'x-decorator-props'
+        : 'x-component-props'
+      node.props[styleKey] = node.props[styleKey] || {}
+      node.props[styleKey].style = node.props[styleKey].style || {}
+      const nodeStyle = node.props[styleKey].style
+      if (!nodeStyle.left?.includes('px')) {
+        nodeStyle.left = '0px'
+      }
+      if (!nodeStyle.top?.includes('px')) {
+        nodeStyle.top = '0px'
+      }
+    },
+    x(node, diffX) {
+      return {
+        translate: () => {
+          node.props = node.props || {}
+          const styleKey = node.props['x-decorator']
+            ? 'x-decorator-props'
+            : 'x-component-props'
+          node.props[styleKey] = node.props[styleKey] || {}
+          node.props[styleKey].style = node.props[styleKey].style || {}
+          const nodeStyle = node.props[styleKey].style
+
+          let left = 0
+          const theString = nodeStyle.left || '0px'
+          if (theString?.includes('px')) {
+            left = Number(String(theString).slice(0, -2))
+          }
+          nodeStyle.left = left + parseInt(String(diffX)) + 'px'
+        },
+      }
+    },
+    y(node, diffY) {
+      return {
+        translate: () => {
+          node.props = node.props || {}
+          const styleKey = node.props['x-decorator']
+            ? 'x-decorator-props'
+            : 'x-component-props'
+          node.props[styleKey] = node.props[styleKey] || {}
+          node.props[styleKey].style = node.props[styleKey].style || {}
+          const nodeStyle = node.props[styleKey].style
+
+          let top = 0
+          const theString = nodeStyle.top || '0px'
+          if (theString?.includes('px')) {
+            top = Number(String(theString).slice(0, -2))
+          }
+
+          nodeStyle.top = top + parseInt(String(diffY)) + 'px'
+        },
+      }
+    },
+  },
 }

@@ -1,7 +1,7 @@
 import { CSSProperties, defineComponent } from 'vue'
 import { observer } from '@formily/reactive-vue'
-import { ClosestPosition } from '@pind/designable-core'
-import { isNum } from '@pind/designable-shared'
+import { ClosestPosition } from '@/design/core/src'
+import { isNum } from '@/design/shared/src'
 
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 

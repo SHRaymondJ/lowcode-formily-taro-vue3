@@ -1,5 +1,5 @@
 import { defineComponent, PropType, provide, ref, toRef , VNode } from 'vue'
-import { GlobalRegistry,TreeNode } from '@pind/designable-core'
+import { GlobalRegistry,TreeNode } from '@/design/core/src'
 import { observer } from '@formily/reactive-vue'
 import cls from 'classnames'
 

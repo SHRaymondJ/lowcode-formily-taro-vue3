@@ -11,14 +11,14 @@ import {
 import { observer } from '@formily/reactive-vue'
 import { FormItem } from '@/design/elementcomponents/src/'
 import { each, reduce } from '@formily/shared'
-import { createBehavior } from '@pind/designable-core'
+import { createBehavior } from '@/design/core/src'
 import {
   DnFC,
   useComponents,
   useDesigner,
   useTreeNode,
 } from '@/design/prototypes/src'
-import { isArr, isFn, isStr } from '@pind/designable-shared'
+import { isArr, isFn, isStr } from '@/design/shared/src'
 import { Container } from '../../common/Container'
 import { AllLocales } from '../../locales'
 import { defineComponent } from 'vue'

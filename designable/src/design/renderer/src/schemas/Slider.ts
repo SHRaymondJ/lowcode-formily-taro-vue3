@@ -1,4 +1,4 @@
-import { GlobalRegistry } from '@pind/designable-core'
+import { GlobalRegistry } from '@/design/core/src'
 import { ISchema } from '@formily/vue'
 
 export const Slider: ISchema = {

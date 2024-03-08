@@ -7,7 +7,7 @@ import { Header } from './Header'
 import { traverseTree } from './shared'
 import { ITreeDataSource, INodeItem } from './types'
 import './styles.less'
-import { GlobalRegistry } from '@pind/designable-core'
+import { GlobalRegistry } from '@/design/core/src'
 import { PropType } from 'vue'
 
 import type { TreeComponentProps as TreeProps } from 'element-plus/es/components/tree/src/tree.type'

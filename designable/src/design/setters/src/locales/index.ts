@@ -1,4 +1,4 @@
-import { GlobalRegistry } from '@pind/designable-core'
+import { GlobalRegistry } from '@/design/core/src'
 import zhCN from './zh-CN'
 import enUS from './en-US'
 

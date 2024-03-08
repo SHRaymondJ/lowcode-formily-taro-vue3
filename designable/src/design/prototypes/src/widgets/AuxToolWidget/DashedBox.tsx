@@ -7,7 +7,7 @@ import {
 import { observer } from '@formily/reactive-vue'
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 import { computed, defineComponent } from 'vue'
-import { isNum } from '@pind/designable-shared'
+import { isNum } from '@/design/shared/src'
 import { FragmentComponent as Fragment } from '@formily/vue'
 
 const DashBox = observer(

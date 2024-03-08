@@ -1,4 +1,4 @@
-import { TreeNode } from '@pind/designable-core'
+import { TreeNode } from '@/design/core/src'
 import { InjectionKey, Ref } from 'vue'
 
 interface INodeContext {

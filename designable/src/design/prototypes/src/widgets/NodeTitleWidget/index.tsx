@@ -1,6 +1,6 @@
 import { observer } from '@formily/reactive-vue'
 import { defineComponent } from 'vue'
-import { TreeNode } from '@pind/designable-core'
+import { TreeNode } from '@/design/core/src'
 import { PropType } from 'vue'
 
 const NodeTitleWidgetComponent = defineComponent({

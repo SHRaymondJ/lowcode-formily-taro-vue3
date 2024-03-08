@@ -1,5 +1,5 @@
 import { useDesigner, usePrefix } from '../../hooks'
-import { TreeNode } from '@pind/designable-core'
+import { TreeNode } from '@/design/core/src'
 import { IconWidget } from '../IconWidget'
 import cls from 'classnames'
 import { defineComponent } from 'vue'
@@ -17,7 +17,7 @@ export const TranslateHandler = defineComponent({
             const designer = designerRef.value
             return {
                 [designer.props.nodeTranslateAttrName!]: value,
-                class: cls(prefix, value),
+                class: cls(prefix.value, value),
             }
         }
         return () => {
