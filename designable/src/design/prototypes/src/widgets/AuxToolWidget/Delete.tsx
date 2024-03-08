@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { TreeNode } from '@pind/designable-core'
+import { TreeNode } from '@/design/core/src'
 import { Button } from '@tarojs/components'
 
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'

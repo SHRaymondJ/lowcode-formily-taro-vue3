@@ -1,6 +1,6 @@
 import { inject, onBeforeUnmount, Ref,ref } from 'vue'
-import { Engine } from '@pind/designable-core'
-import { isFn } from '@pind/designable-shared'
+import { Engine } from '@/design/core/src'
+import { isFn } from '@/design/shared/src'
 
 import { DesignerEngineSymbol } from '../context'
 

@@ -1,5 +1,5 @@
-import { isStr, isPlainObj } from '@pind/designable-shared'
-import { GlobalRegistry, IDesignerMiniLocales } from '@pind/designable-core'
+import { isStr, isPlainObj } from '@/design/shared/src'
+import { GlobalRegistry, IDesignerMiniLocales } from '@/design/core/src'
 import { observer } from '@formily/reactive-vue'
 import { defineComponent, isVNode } from 'vue'
 import { isText } from 'element-plus/es/utils/index'

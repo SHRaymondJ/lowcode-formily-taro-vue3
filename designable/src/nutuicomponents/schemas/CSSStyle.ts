@@ -3,6 +3,39 @@ import { ISchema } from '@formily/vue'
 export const CSSStyle: ISchema = {
   type: 'void',
   properties: {
+    'style.position': {
+      type: 'string',
+      'x-decorator': 'FormItem',
+      default: 'relative',
+      'x-component': 'Select',
+      enum: [
+        { label: 'static', value: 'static' },
+        { label: 'relative', value: 'relative' },
+        { label: 'absolute', value: 'absolute' },
+        { label: 'fixed', value: 'fixed' },
+        { label: 'sticky', value: 'sticky' },
+      ],
+    },
+    'style.top': {
+      type: 'string',
+      'x-decorator': 'FormItem',
+      'x-component': 'SizeInput',
+    },
+    'style.left': {
+      type: 'string',
+      'x-decorator': 'FormItem',
+      'x-component': 'SizeInput',
+    },
+    'style.right': {
+      type: 'string',
+      'x-decorator': 'FormItem',
+      'x-component': 'SizeInput',
+    },
+    'style.bottom': {
+      type: 'string',
+      'x-decorator': 'FormItem',
+      'x-component': 'SizeInput',
+    },
     'style.width': {
       type: 'string',
       'x-decorator': 'FormItem',

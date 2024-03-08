@@ -12,8 +12,8 @@ import {
   CursorStatus,
   DragMoveEvent,
   TreeNode,
-} from '@pind/designable-core'
-import { isFn } from '@pind/designable-shared'
+} from '@/design/core/src'
+import { isFn } from '@/design/shared/src'
 import cls from 'classnames'
 
 import { useContext, useStyle } from '@/design/prototypes/src'

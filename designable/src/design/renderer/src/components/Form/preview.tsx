@@ -1,4 +1,4 @@
-import { createBehavior, createResource } from '@pind/designable-core'
+import { createBehavior, createResource } from '@/design/core/src'
 import { createForm } from '@formily/core'
 import { observer } from '@formily/reactive-vue'
 import { Form as FormilyForm } from '@/design/elementcomponents/src'

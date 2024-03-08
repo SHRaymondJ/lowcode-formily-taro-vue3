@@ -1,6 +1,6 @@
 import { defineComponent, getCurrentInstance, markRaw,ref, unref, VNode, watch } from 'vue'
 import { FragmentComponent, VueComponent } from '@formily/vue'
-import { isValid } from '@pind/designable-shared'
+import { isValid } from '@/design/shared/src'
 import cls from 'classnames'
 
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'

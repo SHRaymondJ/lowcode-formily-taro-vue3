@@ -1,4 +1,4 @@
-import { Operation } from '@pind/designable-core'
+import { Operation } from '@/design/core/src'
 import { onFieldInputValueChange } from '@formily/core'
 import { Ref } from 'vue'
 let timeRequest = null

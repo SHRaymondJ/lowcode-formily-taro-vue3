@@ -9,7 +9,7 @@ import {
   VNode,
 } from 'vue'
 import { observer } from '@formily/reactive-vue'
-import { TreeNode, Viewport } from '@pind/designable-core'
+import { TreeNode, Viewport } from '@/design/core/src'
 import cls from 'classnames'
 
 import { useStyle } from '@/design/prototypes/src'

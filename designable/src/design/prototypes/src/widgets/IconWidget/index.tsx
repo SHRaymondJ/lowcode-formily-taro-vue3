@@ -1,4 +1,4 @@
-import { isStr, isFn, isObj, isPlainObj } from '@pind/designable-shared'
+import { isStr, isFn, isObj, isPlainObj } from '@/design/shared/src'
 import { observer } from '@formily/reactive-vue'
 import { ElTooltip, ElTooltipProps } from 'element-plus'
 import { usePrefix, useRegistry, useTheme } from '../../hooks'

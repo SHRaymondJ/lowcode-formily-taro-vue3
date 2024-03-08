@@ -1,5 +1,5 @@
 import { computed, ComputedRef, Ref, ref } from 'vue'
-import { Workspace } from '@pind/designable-core'
+import { Workspace } from '@/design/core/src'
 
 import { useContext, WorkspaceSymbol } from '../context'
 import { computed as reactiveComputed } from '../shared'

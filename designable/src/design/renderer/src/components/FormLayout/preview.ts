@@ -1,6 +1,6 @@
 import { FormLayout as FormilyFormLayout } from '@/design/elementcomponents/src'
 import { VueComponent } from '@formily/vue'
-import { createBehavior, createResource } from '@pind/designable-core'
+import { createBehavior, createResource } from '@/design/core/src'
 import { DnFC } from '@/design/prototypes/src'
 import { withContainer } from '../../common/Container'
 import { createVoidFieldSchema } from '../Field'

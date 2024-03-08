@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { observer } from '@formily/reactive-vue'
-import { CursorDragType, CursorStatus } from '@pind/designable-core'
-import { calcRectByStartEndPoint, isNum } from '@pind/designable-shared'
+import { CursorDragType, CursorStatus } from '@/design/core/src'
+import { calcRectByStartEndPoint, isNum } from '@/design/shared/src'
 import cls from 'classnames'
 
 import { useCursor, useOperation, usePrefix, useViewport } from '../../hooks'
@@ -54,7 +54,6 @@ export const FreeSelection = observer(
           }
           return baseStyle
         }
-        console.log('FreeSelection -> ', )
         if (
           operation.moveHelper.hasDragNodes ||
           cursorRef.value.status !== CursorStatus.Dragging ||

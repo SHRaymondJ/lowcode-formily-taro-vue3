@@ -1,7 +1,7 @@
 import { defineComponent, markRaw, toRaw } from 'vue'
 import { toJS } from '@formily/reactive'
 import { observer } from '@formily/reactive-vue'
-import { ITreeNode } from '@pind/designable-core'
+import { ITreeNode } from '@/design/core/src'
 
 import { Viewport } from '../containers'
 import { useTree, useWorkbench } from '../hooks'

@@ -1,6 +1,6 @@
 import { observer } from '@formily/reactive-vue'
 import { ElCollapse as Collapse, ElCollapseItem as CollapseItem } from 'element-plus'
-import { TreeNode, createBehavior, createResource } from '@pind/designable-core'
+import { TreeNode, createBehavior, createResource } from '@/design/core/src'
 import {
   useTreeNode,
   useNodeIdProps,
@@ -18,7 +18,7 @@ import { AllLocales } from '../../locales'
 import { matchComponent } from '../../shared'
 import { DefineComponent, defineComponent, nextTick, ref } from 'vue'
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
-import { uid } from '@pind/designable-shared'
+import { uid } from '@/design/shared/src'
 
 const parseCollapse = (parent: TreeNode) => {
   const tabs: TreeNode[] = []

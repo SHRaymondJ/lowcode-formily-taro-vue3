@@ -1,4 +1,4 @@
-import { createLocales } from '@pind/designable-core'
+import { createLocales } from '@/design/core/src'
 
 export const Upload = {
   'zh-CN': {

@@ -2,11 +2,11 @@ import { defineComponent, unref, provide, toRef } from 'vue'
 import { ArrayField } from '@formily/core'
 import { useField, Schema, ISchema, SchemaSymbol } from '@formily/vue'
 import { observer } from '@formily/reactive-vue'
-import { GlobalRegistry } from '@pind/designable-core'
+import { GlobalRegistry } from '@/design/core/src'
 import { ArrayItems } from '@/design/elementcomponents/src'
 import { FoldItem } from '@/design/settings-form/src'
 import { ElSelect as Select, ElOption as Option } from 'element-plus'
-import { isStr } from '@pind/designable-shared'
+import { isStr } from '@/design/shared/src'
 
 export interface IValidatorSetterProps {
     value?: any

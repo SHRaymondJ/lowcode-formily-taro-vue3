@@ -1,7 +1,7 @@
 import { computed, defineComponent, getCurrentInstance, unref } from 'vue'
 import { createForm } from '@formily/core'
 import { observer } from '@formily/reactive-vue'
-import { createBehavior, createResource } from '@pind/designable-core'
+import { createBehavior, createResource } from '@/design/core/src'
 import { FormPage as FormPageRaw } from '@raymond/formily-nutui-taro/src/components'
 
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'

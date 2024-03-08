@@ -1,6 +1,6 @@
 import { isVoidField, onFieldReact } from '@formily/core'
-import { TreeNode, GlobalRegistry } from '@pind/designable-core'
-import { isStr } from '@pind/designable-shared'
+import { TreeNode, GlobalRegistry } from '@/design/core/src'
+import { isStr } from '@/design/shared/src'
 import { IconWidget } from '@/design/prototypes/src'
 
 const takeIcon = (message: string) => {

@@ -3,7 +3,7 @@ import {
   ElTableColumn,
   ElRow,
 } from 'element-plus'
-import { TreeNode, createBehavior, createResource } from '@pind/designable-core'
+import { TreeNode, createBehavior, createResource } from '@/design/core/src'
 import {
   useTreeNode,
   TreeNodeWidget,
@@ -33,7 +33,7 @@ import { VueComponent } from '@formily/vue'
 import { defineComponent, getCurrentInstance, onMounted } from 'vue'
 import { observe } from '@formily/reactive'
 import { onUpdated, ref, VNode } from 'vue'
-import { uid } from '@pind/designable-shared'
+import { uid } from '@/design/shared/src'
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode('object')
 

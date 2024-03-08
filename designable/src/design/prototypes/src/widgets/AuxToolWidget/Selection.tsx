@@ -1,7 +1,7 @@
 import { CSSProperties, defineComponent, toRef } from 'vue'
 import { observer } from '@formily/reactive-vue'
-import { TreeNode } from '@pind/designable-core'
-import { isNum } from '@pind/designable-shared'
+import { TreeNode } from '@/design/core/src'
+import { isNum } from '@/design/shared/src'
 
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 
@@ -63,7 +63,6 @@ export const SelectionBox = defineComponent({
       const selectionId = {
         [designer.props?.nodeSelectionIdAttrName!]: props.node.id,
       }
-      console.log('Selection -> ', nodeRect)
       return (
         <div
           {...selectionId}

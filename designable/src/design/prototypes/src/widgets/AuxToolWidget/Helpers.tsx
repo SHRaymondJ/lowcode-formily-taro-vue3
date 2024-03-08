@@ -1,6 +1,6 @@
 import { computed, defineComponent, nextTick, ref, unref } from 'vue'
 import { reaction } from '@formily/reactive'
-import { TreeNode } from '@pind/designable-core'
+import { TreeNode } from '@/design/core/src'
 import cls from 'classnames'
 import { ElButtonGroup as ButtonGroup } from 'element-plus'
 

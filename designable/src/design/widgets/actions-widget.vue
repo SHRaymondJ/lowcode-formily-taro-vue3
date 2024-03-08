@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
 import { loadInitialSchema, saveSchema } from '../service'
-import { GlobalRegistry } from '@pind/designable-core'
+import { GlobalRegistry } from '@/design/core/src'
 import { useDesigner, useTree } from '@/design/prototypes/src'
 
 function useI18n() {

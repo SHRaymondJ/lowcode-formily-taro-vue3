@@ -1,6 +1,6 @@
 import { ElButton as Button, ElButtonGroup as ButtonGroup } from 'element-plus'
 import { observer } from '@formily/reactive-vue'
-import { WorkbenchTypes } from '@pind/designable-core'
+import { WorkbenchTypes } from '@/design/core/src'
 import { IconWidget } from '../IconWidget'
 import { usePrefix, useWorkbench } from '../../hooks'
 import { defineComponent } from 'vue'

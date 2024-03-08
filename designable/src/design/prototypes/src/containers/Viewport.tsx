@@ -1,7 +1,7 @@
 import { usePrefix, useViewport } from '../hooks'
 import { AuxToolWidget, EmptyWidget } from '../widgets'
-import { Viewport as ViewportType } from '@pind/designable-core'
-import { requestIdle } from '@pind/designable-shared'
+import { Viewport as ViewportType } from '@/design/core/src'
+import { requestIdle } from '@/design/shared/src'
 import cls from 'classnames'
 import {
   defineComponent,
@@ -71,6 +71,7 @@ export const Viewport = defineComponent({
           style={{
             opacity: !loaded ? 0 : 1,
             overflow: isFrameRef.value ? 'hidden' : 'overlay',
+            overflowX: 'hidden',
             ...style,
           }}
         >
