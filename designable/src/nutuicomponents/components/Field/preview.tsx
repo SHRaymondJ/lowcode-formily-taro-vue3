@@ -11,11 +11,10 @@ import {
   Schema,
   VoidField,
 } from '@formily/vue'
-import { createBehavior } from '@/design/core/src'
-import { isArr, isFn, isStr } from '@/design/shared/src'
 import { FormItem } from '@raymond/formily-nutui-taro/src/components'
 import { View } from '@tarojs/components'
 
+import { createBehavior } from '@/design/core/src'
 import { composeExport } from '@/design/elementcomponents/src/__builtins__'
 import {
   DnFC,
@@ -23,10 +22,11 @@ import {
   useDesigner,
   useTreeNode,
 } from '@/design/prototypes/src'
+import { isArr, isFn, isStr } from '@/design/shared/src'
+import { behaviorOfResizeAndtranslate } from '@/nutuicomponents/shared'
 
 import { Container } from '../../common/Container'
 import { AllLocales } from '../../locales'
-import { behaviorOfResizeAndtranslate } from '@/nutuicomponents/shared'
 
 Schema.silent(true)
 

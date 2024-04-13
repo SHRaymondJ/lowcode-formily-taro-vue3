@@ -1,5 +1,3 @@
-import Components from 'unplugin-vue-components/webpack';
-import NutUIResolver from '@nutui/nutui-taro/dist/resolver';
 import path from 'path'
 
 const config = {
@@ -43,12 +41,6 @@ const config = {
     data: `@import "@nutui/nutui-taro/dist/styles/variables.scss";`
   },
   mini: {
-    webpackChain(chain) {
-      chain.plugin('unplugin-vue-components').use(Components({
-        include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/],
-        resolvers: [NutUIResolver({taro: true})]
-      }))
-    },
     postcss: {
       pxtransform: {
         enable: true,
@@ -72,11 +64,6 @@ const config = {
     }
   },
   h5: {
-    webpackChain(chain) {
-      chain.plugin('unplugin-vue-components').use(Components({
-        resolvers: [NutUIResolver({taro: true})]
-      }))
-    },
     publicPath: '/',
     staticDirectory: 'static',
     esnextModules: ['nutui-taro', 'icons-vue-taro'],

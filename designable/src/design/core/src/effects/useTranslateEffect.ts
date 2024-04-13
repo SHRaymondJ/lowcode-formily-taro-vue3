@@ -1,5 +1,5 @@
-import { Engine, CursorDragType } from '../models'
-import { DragStartEvent, DragMoveEvent, DragStopEvent } from '../events'
+import { DragMoveEvent, DragStartEvent, DragStopEvent } from '../events'
+import { CursorDragType,Engine } from '../models'
 
 export const useTranslateEffect = (engine: Engine) => {
   engine.subscribeTo(DragStartEvent, (event) => {
@@ -64,10 +64,13 @@ export const useTranslateEffect = (engine: Engine) => {
       if (!dragNodes.length) return
       dragNodes.forEach((node) => {
         const element = node.getElement()
-        if (!element || !dragStartNodesRect || !dragNodesRect) return
+        if (!element) return
         element.style.transform = ''
-        node.designerProps?.translatable?.x?.(node, dragNodesRect.x - dragStartNodesRect.x).translate()
-        node.designerProps?.translatable?.y?.(node, dragNodesRect.y - dragStartNodesRect.y).translate()
+        node.designerProps.translatable?.end?.(
+          node,
+          dragNodesRect!.x - dragStartNodesRect!.x,
+          dragNodesRect!.y - dragStartNodesRect!.y
+        )
       })
     }
   })

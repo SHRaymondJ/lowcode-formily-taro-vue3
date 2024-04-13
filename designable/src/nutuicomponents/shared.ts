@@ -1,4 +1,4 @@
-import { TreeNode, Engine } from '@/design/core/src'
+import { Engine,IResizable, ITranslate,TreeNode  } from '@/design/core/src'
 
 export type ComponentNameMatcher =
   | string
@@ -52,8 +52,8 @@ export const queryNodesByComponentPath = (
   }
   const result = matchComponent(node, path[0])
     ? node.children.reduce((buf, child) => {
-      return buf.concat(queryNodesByComponentPath(child, path.slice(1)))
-    }, [])
+        return buf.concat(queryNodesByComponentPath(child, path.slice(1)))
+      }, [] as any)
     : []
   return result
 }
@@ -97,7 +97,9 @@ export const createNodeId = (designer: Engine, id: string) => {
 }
 
 export const createEnsureTypeItemsNode = (type: string) => (node: TreeNode) => {
-  const objectNode = node.children.find((child) => child.props?.['type'] === type)
+  const objectNode = node.children.find(
+    (child) => child.props?.['type'] === type
+  )
   if (objectNode) {
     return objectNode
   } else {
@@ -114,60 +116,28 @@ export const createEnsureTypeItemsNode = (type: string) => (node: TreeNode) => {
 
 export const behaviorOfResizeAndtranslate = {
   resizable: {
-    width(node, element) {
+    width: true,
+    height: true,
+    end(node, element) {
       const width = Number(
         node.props?.style?.width ?? element.getBoundingClientRect().width
       )
-      return {
-        // plus: () => {
-        //   node.props = node.props || {}
-        //   node.props.style = node.props.style || {}
-        //   node.props.style.width = width + 10
-        // },
-        // minus: () => {
-        //   node.props = node.props || {}
-        //   node.props.style = node.props.style || {}
-        //   node.props.style.width = width - 10
-        // },
-        resize() {
-          node.props = node.props || {}
-          const styleKey = node.props['x-decorator']
-            ? 'x-decorator-props'
-            : 'x-component-props'
-          node.props[styleKey] = node.props[styleKey] || {}
-          node.props[styleKey].style = node.props[styleKey].style || {}
-          node.props[styleKey].style.width = width + 'px'
-        },
-      }
-    },
-    height(node, element) {
       const height = Number(
         node.props?.style?.height ?? element.getBoundingClientRect().height
       )
-      return {
-        // plus: () => {
-        //   node.props = node.props || {}
-        //   node.props.style = node.props.style || {}
-        //   node.props.style.height = height + 10
-        // },
-        // minus: () => {
-        //   node.props = node.props || {}
-        //   node.props.style = node.props.style || {}
-        //   node.props.style.height = height - 10
-        // },
-        resize() {
-          node.props = node.props || {}
-          const styleKey = node.props['x-decorator']
-            ? 'x-decorator-props'
-            : 'x-component-props'
-          node.props[styleKey] = node.props[styleKey] || {}
-          node.props[styleKey].style = node.props[styleKey].style || {}
-          node.props[styleKey].style.height = height + 'px'
-        },
-      }
+      node.props = node.props || {}
+      const styleKey = node.props['x-decorator']
+        ? 'x-decorator-props'
+        : 'x-component-props'
+      node.props[styleKey] = node.props[styleKey] || {}
+      node.props[styleKey].style = node.props[styleKey].style || {}
+      node.props[styleKey].style.width = width + 'px'
+      node.props[styleKey].style.height = height + 'px'
     },
-  },
+  } as IResizable,
   translatable: {
+    x: true,
+    y: true,
     reset(node) {
       node.props = node.props || {}
       const styleKey = node.props['x-decorator']
@@ -183,46 +153,29 @@ export const behaviorOfResizeAndtranslate = {
         nodeStyle.top = '0px'
       }
     },
-    x(node, diffX) {
-      return {
-        translate: () => {
-          node.props = node.props || {}
-          const styleKey = node.props['x-decorator']
-            ? 'x-decorator-props'
-            : 'x-component-props'
-          node.props[styleKey] = node.props[styleKey] || {}
-          node.props[styleKey].style = node.props[styleKey].style || {}
-          const nodeStyle = node.props[styleKey].style
+    end(node, diffX, diffY) {
+      node.props = node.props || {}
+      const styleKey = node.props['x-decorator']
+        ? 'x-decorator-props'
+        : 'x-component-props'
+      node.props[styleKey] = node.props[styleKey] || {}
+      node.props[styleKey].style = node.props[styleKey].style || {}
+      const nodeStyle = node.props[styleKey].style
 
-          let left = 0
-          const theString = nodeStyle.left || '0px'
-          if (theString?.includes('px')) {
-            left = Number(String(theString).slice(0, -2))
-          }
-          nodeStyle.left = left + parseInt(String(diffX)) + 'px'
-        },
+      let left = 0
+      const theString1 = nodeStyle.left || '0px'
+      if (theString1?.includes('px')) {
+        left = Number(String(theString1).slice(0, -2))
       }
-    },
-    y(node, diffY) {
-      return {
-        translate: () => {
-          node.props = node.props || {}
-          const styleKey = node.props['x-decorator']
-            ? 'x-decorator-props'
-            : 'x-component-props'
-          node.props[styleKey] = node.props[styleKey] || {}
-          node.props[styleKey].style = node.props[styleKey].style || {}
-          const nodeStyle = node.props[styleKey].style
+      nodeStyle.left = left + parseInt(String(diffX)) + 'px'
 
-          let top = 0
-          const theString = nodeStyle.top || '0px'
-          if (theString?.includes('px')) {
-            top = Number(String(theString).slice(0, -2))
-          }
-
-          nodeStyle.top = top + parseInt(String(diffY)) + 'px'
-        },
+      let top = 0
+      const theString2 = nodeStyle.top || '0px'
+      if (theString2?.includes('px')) {
+        top = Number(String(theString2).slice(0, -2))
       }
+
+      nodeStyle.top = top + parseInt(String(diffY)) + 'px'
     },
-  },
+  } as ITranslate,
 }

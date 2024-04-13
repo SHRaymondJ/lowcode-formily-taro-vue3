@@ -1,5 +1,5 @@
-import { Engine, CursorDragType } from '../models'
-import { DragStartEvent, DragMoveEvent, DragStopEvent } from '../events'
+import { DragMoveEvent, DragStartEvent, DragStopEvent } from '../events'
+import { CursorDragType, Engine } from '../models'
 
 export const useResizeEffect = (engine: Engine) => {
   const findStartNodeHandler = (target: HTMLElement) => {
@@ -70,10 +70,7 @@ export const useResizeEffect = (engine: Engine) => {
       helper.resize(node, (rect) => {
         element.style.width = rect.width + 'px'
         element.style.height = rect.height + 'px'
-        // element.style.position = 'absolute'
-        // element.style.left = '0px'
-        // element.style.top = '0px'
-        element.style.transform = `translate3d(${rect.x}px,${rect.y}px,0)`
+        node.designerProps.resizable?.move?.(node, element, rect)
       })
     })
   })
@@ -90,8 +87,7 @@ export const useResizeEffect = (engine: Engine) => {
       dragNodes.forEach((node) => {
         const element = node.getElement()
         if (!element) return
-        node?.designerProps?.resizable?.width?.(node, element).resize()
-        node?.designerProps?.resizable?.height?.(node, element).resize()
+        node.designerProps.resizable?.end?.(node, element)
       })
     }
   })
